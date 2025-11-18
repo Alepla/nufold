@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from '../header';
-import { Home } from '../../pages/home';
-import { Dashboard } from '../../pages/dashboard';
-import { NotFound } from '../../pages/not-found';
+import { Home, Dashboard, NotFound } from '../../pages';
 
 export const AppRouter: React.FC = () => {
   return (

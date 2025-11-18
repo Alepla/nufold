@@ -1,6 +1,5 @@
 import { IntlProvider } from 'react-intl';
-import { ErrorBoundary } from './components/error-boundary';
-import { AppRouter } from './components/router';
+import { ErrorBoundary, AppRouter } from './components';
 import esMessages from './locales/es.json';
 import './styles';
 

@@ -1,4 +1,4 @@
-import { Product } from '../services/types';
+import { Product } from '../services/models';
 
 export const calculateShippingPerPerson = (
   totalShipping: number,

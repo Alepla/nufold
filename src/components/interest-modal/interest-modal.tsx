@@ -1,5 +1,5 @@
 import { useIntl } from 'react-intl';
-import { Product } from '../../services/types';
+import { Product } from '../../services/models';
 import { useInterestModal } from './hooks/use-interest-modal';
 
 interface InterestModalProps {

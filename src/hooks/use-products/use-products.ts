@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Product } from '../services/types';
-import { mockProducts } from '../utils/mock-data';
+import { Product } from '../../services/models';
+import { mockProducts } from '../../utils';
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);

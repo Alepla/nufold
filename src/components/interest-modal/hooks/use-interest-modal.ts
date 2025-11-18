@@ -1,6 +1,6 @@
 import { useState, FormEvent, useMemo } from 'react';
-import { Product } from '../../../services/types';
-import { calculateShippingPerPerson, calculateTotalPerPerson } from '../../../utils/calculations';
+import { Product } from '../../../services/models';
+import { calculateShippingPerPerson, calculateTotalPerPerson } from '../../../utils';
 
 interface InterestFormData {
   name: string;

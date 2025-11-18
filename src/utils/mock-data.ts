@@ -1,4 +1,4 @@
-import { Product, Interest } from '../services/types';
+import { Product, Interest } from '../services/models';
 
 export const mockProducts: Product[] = [
   {

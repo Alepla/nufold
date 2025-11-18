@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Product } from '../../../services/types';
-import { useProducts } from '../../../hooks/use-products';
+import { Product } from '../../../services/models';
+import { useProducts } from '../../../hooks';
 
 export const useHome = () => {
   const { products, loading, addInterest } = useProducts();

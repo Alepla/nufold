@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn type-check && yarn lint
+echo "🔍 Running type check..."
+yarn type-check
+
+echo "🔍 Running linter..."
+yarn lint
+
+echo "✅ All checks passed!"

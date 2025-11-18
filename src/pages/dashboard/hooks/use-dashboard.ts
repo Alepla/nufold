@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { Product } from '../../../services/types';
-import { useProducts } from '../../../hooks/use-products';
-import { calculateShippingPerPerson, hasReachedMinimum } from '../../../utils/calculations';
+import { Product } from '../../../services/models';
+import { useProducts } from '../../../hooks';
+import { calculateShippingPerPerson, hasReachedMinimum } from '../../../utils';
 
 interface DashboardStats {
   readyCount: number;

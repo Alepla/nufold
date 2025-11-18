@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
-import { Product } from '../../services/types';
-import { calculateShippingPerPerson, hasReachedMinimum, participantsNeeded } from '../../utils/calculations';
+import { Product } from '../../services/models';
+import { calculateShippingPerPerson, hasReachedMinimum, participantsNeeded } from '../../utils';
 
 interface ProductCardProps {
   product: Product;
