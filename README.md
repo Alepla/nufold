@@ -7,13 +7,13 @@ Crowdfunding platform for importing products from China. Users can show interest
 ### Installation
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 The application will open at `http://localhost:3000`
@@ -21,7 +21,7 @@ The application will open at `http://localhost:3000`
 ### Build
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## 📁 Project Structure
@@ -40,14 +40,6 @@ crowd-import/
 ├── public/             # Static files
 └── package.json
 ```
-
-## 🎯 Main Features
-
-- 📦 List of available products to import
-- 👥 Interest registration system per product
-- 📊 Management dashboard for administrators
-- 💰 Automatic calculation of shared costs
-- 🔔 Notifications when minimum participants is reached
 
 ## 🛠️ Technologies
 
