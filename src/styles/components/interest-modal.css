@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   max-width: 500px;
   width: 100%;
@@ -21,6 +21,7 @@
   overflow-y: auto;
   position: relative;
   padding: 24px;
+  transition: background-color 0.3s ease;
 }
 
 .modal-close {
@@ -30,7 +31,7 @@
   background: none;
   border: none;
   font-size: 32px;
-  color: #6b7280;
+  color: var(--text-secondary);
   cursor: pointer;
   line-height: 1;
   padding: 0;
@@ -43,14 +44,15 @@
 }
 
 .modal-close:hover {
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .modal-title {
   font-size: 24px;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-primary);
   margin: 0 0 24px 0;
+  transition: color 0.3s ease;
 }
 
 .interest-form {
@@ -68,52 +70,68 @@
 .form-group label {
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .form-group input {
   padding: 12px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.2s;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--accent-color);
+}
+
+.form-group input:focus::placeholder {
+  opacity: 0.5;
 }
 
 .cost-summary {
-  background: #f9fafb;
+  background: var(--bg-secondary);
   padding: 16px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: background-color 0.3s ease;
 }
 
 .cost-summary h3 {
   margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 
 .cost-item {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
 }
 
 .cost-item--total {
   margin-top: 8px;
   padding-top: 12px;
-  border-top: 2px solid #e5e7eb;
+  border-top: 2px solid var(--border-color);
   font-size: 18px;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-primary);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .form-actions {
@@ -135,20 +153,20 @@
 }
 
 .button-primary {
-  background: #3b82f6;
+  background: var(--accent-color);
   color: white;
 }
 
 .button-primary:hover {
-  background: #2563eb;
+  background: var(--accent-hover);
 }
 
 .button-secondary {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .button-secondary:hover {
-  background: #e5e7eb;
+  background: var(--border-color);
 }
 
