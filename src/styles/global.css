@@ -1,3 +1,41 @@
+:root {
+  /* Light theme colors - Inspirado en el mar: arena, espuma y aguas turquesas */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f9ff; /* Azul cielo muy claro, como el reflejo del mar */
+  --bg-tertiary: #ffffff;
+  --bg-hover: #e0f2fe; /* Azul cielo claro */
+  --text-primary: #0c4a6e; /* Azul océano profundo */
+  --text-secondary: #075985; /* Azul océano medio */
+  --text-tertiary: #0284c7; /* Azul turquesa medio */
+  --border-color: #bae6fd; /* Azul turquesa muy claro */
+  --border-hover: #7dd3fc; /* Azul turquesa claro */
+  --shadow: rgba(6, 78, 110, 0.1); /* Sombra azul océano */
+  --shadow-hover: rgba(6, 78, 110, 0.15);
+  --accent-color: #0ea5e9; /* Azul turquesa vibrante */
+  --accent-hover: #0284c7; /* Azul turquesa más profundo */
+  --error-color: #ef4444; /* Rojo coral */
+  --success-color: #06b6d4; /* Cian turquesa, como aguas cristalinas */
+}
+
+[data-theme='dark'] {
+  /* Dark theme colors - Inspirado en el océano profundo */
+  --bg-primary: #0c4a6e; /* Azul océano profundo */
+  --bg-secondary: #082f49; /* Azul océano muy profundo */
+  --bg-tertiary: #075985; /* Azul océano medio */
+  --bg-hover: #075985; /* Azul océano medio */
+  --text-primary: #f0f9ff; /* Blanco azulado muy claro para máximo contraste */
+  --text-secondary: #dbeafe; /* Azul muy claro para buen contraste */
+  --text-tertiary: #bfdbfe; /* Azul claro para elementos secundarios */
+  --border-color: #075985; /* Azul océano medio */
+  --border-hover: #0284c7; /* Azul turquesa medio */
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-hover: rgba(0, 0, 0, 0.5);
+  --accent-color: #60a5fa; /* Azul turquesa más brillante para mejor visibilidad */
+  --accent-hover: #3b82f6; /* Azul más saturado */
+  --error-color: #f87171; /* Rojo coral claro */
+  --success-color: #34d399; /* Verde turquesa más brillante */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,12 +48,39 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f9fafb;
-  color: #111827;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='light'] body::before {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
 }
 
 #root {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 code {
