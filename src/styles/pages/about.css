@@ -1,0 +1,246 @@
+.about {
+  min-height: calc(100vh - 80px);
+  background: transparent;
+  padding: 40px 0;
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 326px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(8, 47, 73, 1) 0%,
+    rgba(8, 47, 73, 1) 30%,
+    rgba(8, 47, 73, 1) 50%,
+    rgba(8, 47, 73, 1) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='light'] .about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 326px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 249, 255, 1) 0%,
+    rgba(240, 249, 255, 1) 30%,
+    rgba(240, 249, 255, 1) 50%,
+    rgba(240, 249, 255, 0.8) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  padding-left: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .about__container {
+    padding-left: 24px;
+  }
+}
+
+.about__hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about__title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  transition: color 0.3s ease;
+}
+
+.about__subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: color 0.3s ease;
+}
+
+.about__section {
+  margin-bottom: 60px;
+}
+
+.about__section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+  transition: color 0.3s ease;
+}
+
+.about__section-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about__step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.about__step-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.about__step-content {
+  flex: 1;
+}
+
+.about__step-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  transition: color 0.3s ease;
+}
+
+.about__step-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about__benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.about__benefit:nth-child(3):last-child {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.about__benefit {
+  background: var(--bg-primary);
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about__benefit-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.about__benefit-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  transition: color 0.3s ease;
+}
+
+.about__benefit-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.about__cta {
+  background: var(--bg-primary);
+  padding: 48px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  text-align: center;
+  margin-top: 60px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about__cta-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  transition: color 0.3s ease;
+}
+
+.about__cta-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .about__title {
+    font-size: 36px;
+  }
+
+  .about__subtitle {
+    font-size: 18px;
+  }
+
+  .about__section-title {
+    font-size: 28px;
+  }
+
+  .about__step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about__benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .about__cta {
+    padding: 32px 24px;
+  }
+}
+
