@@ -1,9 +1,24 @@
 import './global.css';
 import './components/header.css';
+import './components/footer.css';
+import './components/sidebar.css';
+import './components/breadcrumb.css';
+import './components/scroll-to-top-button.css';
 import './components/product-card.css';
+import './components/product-filters.css';
 import './components/interest-modal.css';
 import './components/error-boundary.css';
+import './components/theme-toggle.css';
+import './components/floating-theme-toggle.css';
 import './pages/home.css';
 import './pages/dashboard.css';
+import './pages/about.css';
+import './pages/contact-page.css';
+import './pages/notifications-page.css';
+import './pages/wishlist-page.css';
+import './pages/my-orders-page.css';
+import './pages/faq-page.css';
+import './pages/legal-page.css';
+import './pages/login-page.css';
 import './pages/not-found.css';
 
