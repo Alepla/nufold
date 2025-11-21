@@ -48,7 +48,9 @@
   padding: 32px;
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .contact-page__form {
@@ -85,7 +87,10 @@
   font-family: inherit;
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.2s,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .contact-page__input::placeholder,
@@ -153,7 +158,9 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
   margin-top: 8px;
 }
 
@@ -177,7 +184,9 @@
   padding: 32px;
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .contact-page__info-title {
@@ -268,4 +277,3 @@
     padding: 24px;
   }
 }
-

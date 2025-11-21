@@ -40,7 +40,7 @@ export const Privacy: React.FC = () => {
     changesContent: formatMessage({ id: 'privacy.changesContent' }),
     contactTitle: formatMessage({ id: 'privacy.contactTitle' }),
     contactContent: formatMessage({ id: 'privacy.contactContent' }),
-    backHome: formatMessage({ id: 'notFound.backHome' })
+    backHome: formatMessage({ id: 'notFound.backHome' }),
   };
 
   const sections = [
@@ -51,18 +51,13 @@ export const Privacy: React.FC = () => {
         intl.dataCollectionItem1,
         intl.dataCollectionItem2,
         intl.dataCollectionItem3,
-        intl.dataCollectionItem4
-      ]
+        intl.dataCollectionItem4,
+      ],
     },
     {
       title: intl.dataUseTitle,
       content: intl.dataUseContent,
-      items: [
-        intl.dataUseItem1,
-        intl.dataUseItem2,
-        intl.dataUseItem3,
-        intl.dataUseItem4
-      ]
+      items: [intl.dataUseItem1, intl.dataUseItem2, intl.dataUseItem3, intl.dataUseItem4],
     },
     { title: intl.dataProtectionTitle, content: intl.dataProtectionContent },
     {
@@ -72,13 +67,13 @@ export const Privacy: React.FC = () => {
         intl.userRightsItem1,
         intl.userRightsItem2,
         intl.userRightsItem3,
-        intl.userRightsItem4
-      ]
+        intl.userRightsItem4,
+      ],
     },
     { title: intl.cookiesTitle, content: intl.cookiesContent },
     { title: intl.thirdPartiesTitle, content: intl.thirdPartiesContent },
     { title: intl.changesTitle, content: intl.changesContent },
-    { title: intl.contactTitle, content: intl.contactContent }
+    { title: intl.contactTitle, content: intl.contactContent },
   ];
 
   return (
@@ -86,28 +81,31 @@ export const Privacy: React.FC = () => {
       className="legal-page"
       title={intl.title}
       headerExtra={
-        <p className="legal-page__date">{intl.lastUpdated}: {formatLongDate(new Date())}</p>
+        <p className="legal-page__date">
+          {intl.lastUpdated}: {formatLongDate(new Date())}
+        </p>
       }
     >
       <div className="legal-page__content">
-          <section className="legal-page__section">
-            <p className="legal-page__text">{intl.introduction}</p>
-          </section>
+        <section className="legal-page__section">
+          <p className="legal-page__text">{intl.introduction}</p>
+        </section>
 
-          {sections.map((section, index) => (
-            <LegalSection
-              key={index}
-              title={section.title}
-              content={section.content}
-              items={section.items}
-            />
-          ))}
-        </div>
+        {sections.map((section, index) => (
+          <LegalSection
+            key={index}
+            title={section.title}
+            content={section.content}
+            items={section.items}
+          />
+        ))}
+      </div>
 
       <div className="legal-page__footer">
-        <Link to={ROUTES.LANDING} className="legal-page__back-link">{intl.backHome}</Link>
+        <Link to={ROUTES.LANDING} className="legal-page__back-link">
+          {intl.backHome}
+        </Link>
       </div>
     </Layout>
   );
 };
-

@@ -5,6 +5,5 @@ import { ThemeStoreState } from '../theme-store.model';
 
 export const useThemeStore = createWithEqualityFn<ThemeStoreState, []>(
   createThemeStoreSlice,
-  isEqual,
+  isEqual
 );
-

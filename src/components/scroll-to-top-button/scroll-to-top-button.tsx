@@ -26,12 +26,12 @@ export const ScrollToTopButton: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 
   const intl = {
-    label: formatMessage({ id: 'scrollToTop.label' })
+    label: formatMessage({ id: 'scrollToTop.label' }),
   };
 
   if (!isVisible) {
@@ -48,4 +48,3 @@ export const ScrollToTopButton: React.FC = () => {
     />
   );
 };
-

@@ -14,14 +14,14 @@ export const useProductsPage = () => {
     updateGroupBy,
     updateCategoryFilter,
     updateStatusFilter,
-    resetFilters
+    resetFilters,
   } = useProductFilters(products);
 
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleShowInterest = (productId: string) => {
-    const product = products.find(p => p.id === productId);
+    const product = products.find((p) => p.id === productId);
     if (product) {
       setSelectedProduct(product);
       setIsModalOpen(true);
@@ -56,7 +56,6 @@ export const useProductsPage = () => {
     updateGroupBy,
     updateCategoryFilter,
     updateStatusFilter,
-    resetFilters
+    resetFilters,
   };
 };
-

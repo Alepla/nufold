@@ -8,7 +8,7 @@ export const useLogin = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const { login, register } = useAuthStoreActions();
-  
+
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +34,7 @@ export const useLogin = () => {
     errorRequired: formatMessage({ id: 'login.errorRequired' }),
     errorGeneric: formatMessage({ id: 'login.errorGeneric' }),
     loading: formatMessage({ id: 'login.loading' }),
-    backHome: formatMessage({ id: 'notFound.backHome' })
+    backHome: formatMessage({ id: 'notFound.backHome' }),
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,7 +50,7 @@ export const useLogin = () => {
 
     try {
       let success = false;
-      
+
       if (isLogin) {
         success = await login(email, password);
         if (!success) {
@@ -81,7 +81,11 @@ export const useLogin = () => {
     setName('');
   };
 
-  const submitButtonText = loading ? intl.loading : (isLogin ? intl.loginButton : intl.registerButton);
+  const submitButtonText = loading
+    ? intl.loading
+    : isLogin
+      ? intl.loginButton
+      : intl.registerButton;
   const switchButtonText = isLogin ? intl.switchToRegister : intl.switchToLogin;
 
   return {
@@ -98,7 +102,6 @@ export const useLogin = () => {
     handleSubmit,
     toggleMode,
     submitButtonText,
-    switchButtonText
+    switchButtonText,
   };
 };
-

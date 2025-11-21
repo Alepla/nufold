@@ -8,6 +8,5 @@ export const sortComparators: Record<SortOption, (a: Product, b: Product) => num
   [SORT_OPTIONS.NAME_DESC]: (a, b) => b.name.localeCompare(a.name),
   [SORT_OPTIONS.PARTICIPANTS_ASC]: (a, b) => a.currentParticipants - b.currentParticipants,
   [SORT_OPTIONS.PARTICIPANTS_DESC]: (a, b) => b.currentParticipants - a.currentParticipants,
-  [SORT_OPTIONS.NONE]: () => 0
+  [SORT_OPTIONS.NONE]: () => 0,
 };
-

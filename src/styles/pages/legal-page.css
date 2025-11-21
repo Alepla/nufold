@@ -50,7 +50,9 @@
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .legal-page__section {
@@ -113,7 +115,9 @@
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
 }
 
 .legal-page__back-link:hover {
@@ -142,4 +146,3 @@
     font-size: 15px;
   }
 }
-

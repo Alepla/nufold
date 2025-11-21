@@ -15,4 +15,3 @@ export const Benefit: React.FC<BenefitProps> = ({ icon, title, description }) =>
     </div>
   );
 };
-

@@ -14,7 +14,11 @@ interface CostSummary {
   subtotal: number;
 }
 
-export const useInterestModal = (product: Product, onSubmit: (data: InterestFormData) => void, onClose: () => void) => {
+export const useInterestModal = (
+  product: Product,
+  onSubmit: (data: InterestFormData) => void,
+  onClose: () => void
+) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -30,7 +34,7 @@ export const useInterestModal = (product: Product, onSubmit: (data: InterestForm
     return {
       shippingPerPerson,
       subtotal,
-      totalCost
+      totalCost,
     };
   }, [product, quantity]);
 
@@ -65,7 +69,6 @@ export const useInterestModal = (product: Product, onSubmit: (data: InterestForm
     setQuantity,
     handleQuantityChange,
     costSummary,
-    handleSubmit
+    handleSubmit,
   };
 };
-

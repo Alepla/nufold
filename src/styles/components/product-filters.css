@@ -4,7 +4,9 @@
   padding: 16px;
   margin-bottom: 32px;
   box-shadow: 0 1px 3px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .product-filters__header {
@@ -88,7 +90,11 @@
   font-size: 16px;
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .product-filters__search-input::placeholder {
@@ -115,7 +121,9 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s, opacity 0.2s;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s;
   white-space: nowrap;
 }
 
@@ -150,7 +158,11 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .product-filters__select option {
@@ -198,4 +210,3 @@
     min-width: unset;
   }
 }
-

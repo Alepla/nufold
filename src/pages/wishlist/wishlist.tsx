@@ -24,7 +24,7 @@ export const Wishlist: React.FC = () => {
     subtitle: formatMessage({ id: 'wishlist.subtitle' }),
     loading: formatMessage({ id: 'wishlist.loading' }),
     empty: formatMessage({ id: 'wishlist.empty' }),
-    emptyDescription: formatMessage({ id: 'wishlist.emptyDescription' })
+    emptyDescription: formatMessage({ id: 'wishlist.emptyDescription' }),
   };
 
   const isEmpty = wishlistItems.length === 0;
@@ -32,22 +32,14 @@ export const Wishlist: React.FC = () => {
   const renderContent = () => {
     if (isEmpty) {
       return (
-        <EmptyPage
-          icon={ICONS.HEART}
-          title={intl.empty}
-          description={intl.emptyDescription}
-        />
+        <EmptyPage icon={ICONS.HEART} title={intl.empty} description={intl.emptyDescription} />
       );
     }
 
     return (
       <div className="wishlist-page__grid">
-        {wishlistItems.map(product => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            onShowInterest={() => {}} 
-          />
+        {wishlistItems.map((product) => (
+          <ProductCard key={product.id} product={product} onShowInterest={() => {}} />
         ))}
       </div>
     );
@@ -58,13 +50,8 @@ export const Wishlist: React.FC = () => {
   }
 
   return (
-    <Layout
-      className="wishlist-page"
-      title={intl.title}
-      subtitle={intl.subtitle}
-    >
+    <Layout className="wishlist-page" title={intl.title} subtitle={intl.subtitle}>
       {renderContent()}
     </Layout>
   );
 };
-

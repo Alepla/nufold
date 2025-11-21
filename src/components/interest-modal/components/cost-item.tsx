@@ -9,7 +9,7 @@ interface CostItemProps {
 
 export const CostItem: React.FC<CostItemProps> = ({ label, value, isTotal = false }) => {
   const costItemClassName = classNames('cost-item', {
-    'cost-item--total': isTotal
+    'cost-item--total': isTotal,
   });
 
   return (
@@ -19,4 +19,3 @@ export const CostItem: React.FC<CostItemProps> = ({ label, value, isTotal = fals
     </div>
   );
 };
-

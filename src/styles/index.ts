@@ -24,4 +24,3 @@ import './pages/faq-page.css';
 import './pages/legal-page.css';
 import './pages/login-page.css';
 import './pages/not-found.css';
-

@@ -11,7 +11,9 @@ class HttpClient {
   constructor(baseURL?: string) {
     const envBaseURL = import.meta.env.VITE_API_BASE_URL;
     if (!baseURL && !envBaseURL) {
-      throw new Error('API base URL must be configured via VITE_API_BASE_URL environment variable or passed as constructor parameter');
+      throw new Error(
+        'API base URL must be configured via VITE_API_BASE_URL environment variable or passed as constructor parameter'
+      );
     }
     const finalBaseURL = baseURL || envBaseURL;
     this.client = axios.create({
@@ -88,4 +90,3 @@ class HttpClient {
 }
 
 export const httpClient = new HttpClient();
-

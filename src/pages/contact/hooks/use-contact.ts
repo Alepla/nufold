@@ -15,7 +15,7 @@ export const useContact = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<FormStatus>(FORM_STATUS.IDLE);
@@ -44,14 +44,16 @@ export const useContact = () => {
     subjectProduct: formatMessage({ id: 'contact.subjectProduct' }),
     subjectSupport: formatMessage({ id: 'contact.subjectSupport' }),
     subjectPartnership: formatMessage({ id: 'contact.subjectPartnership' }),
-    address: formatMessage({ id: 'contact.address' })
+    address: formatMessage({ id: 'contact.address' }),
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -61,14 +63,14 @@ export const useContact = () => {
     setSubmitStatus(FORM_STATUS.IDLE);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       setSubmitStatus(FORM_STATUS.SUCCESS);
       setFormData({
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
       });
     } catch (_error) {
       setSubmitStatus(FORM_STATUS.ERROR);
@@ -86,7 +88,7 @@ export const useContact = () => {
     { value: 'general', label: intl.subjectGeneral },
     { value: 'product', label: intl.subjectProduct },
     { value: 'support', label: intl.subjectSupport },
-    { value: 'partnership', label: intl.subjectPartnership }
+    { value: 'partnership', label: intl.subjectPartnership },
   ];
 
   return {
@@ -99,7 +101,6 @@ export const useContact = () => {
     isSuccess,
     isError,
     submitButtonText,
-    subjectOptions
+    subjectOptions,
   };
 };
-

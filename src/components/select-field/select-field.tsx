@@ -28,12 +28,14 @@ export const SelectField: React.FC<SelectFieldProps> = ({
   classNamePrefix = 'form-field',
   required = false,
   disabled = false,
-  showRequiredIndicator = false
+  showRequiredIndicator = false,
 }) => {
   const fieldClassName = classNamePrefix ? `${classNamePrefix}__field` : 'form-field';
   const labelClassName = classNamePrefix ? `${classNamePrefix}__label` : 'form-field__label';
   const selectClassName = classNamePrefix ? `${classNamePrefix}__select` : 'form-field__select';
-  const requiredClassName = classNamePrefix ? `${classNamePrefix}__required` : 'form-field__required';
+  const requiredClassName = classNamePrefix
+    ? `${classNamePrefix}__required`
+    : 'form-field__required';
 
   return (
     <div className={fieldClassName}>
@@ -49,7 +51,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({
         required={required}
         disabled={disabled}
       >
-        {options.map(option => (
+        {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
@@ -58,4 +60,3 @@ export const SelectField: React.FC<SelectFieldProps> = ({
     </div>
   );
 };
-

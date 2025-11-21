@@ -6,16 +6,10 @@ interface LegalSectionProps {
   items?: string[];
 }
 
-export const LegalSection: React.FC<LegalSectionProps> = ({
-  title,
-  content,
-  items
-}) => {
+export const LegalSection: React.FC<LegalSectionProps> = ({ title, content, items }) => {
   return (
     <section className="legal-page__section">
-      {title && (
-        <h2 className="legal-page__section-title">{title}</h2>
-      )}
+      {title && <h2 className="legal-page__section-title">{title}</h2>}
       <p className="legal-page__text">{content}</p>
       {items && items.length > 0 && (
         <ul className="legal-page__list">
@@ -27,4 +21,3 @@ export const LegalSection: React.FC<LegalSectionProps> = ({
     </section>
   );
 };
-

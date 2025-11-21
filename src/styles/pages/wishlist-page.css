@@ -47,7 +47,9 @@
   background: var(--bg-primary);
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .wishlist-page__empty-icon {
@@ -104,4 +106,3 @@
     font-size: 20px;
   }
 }
-

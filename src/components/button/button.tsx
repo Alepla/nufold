@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   disabled = false,
   ariaExpanded,
-  ariaLabel
+  ariaLabel,
 }) => {
   return (
     <button
@@ -33,4 +33,3 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
-

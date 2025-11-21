@@ -7,4 +7,3 @@ export interface Interest {
   quantity: number;
   createdAt: string;
 }
-

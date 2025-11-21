@@ -16,7 +16,9 @@
   padding: 3rem;
   box-shadow: 0 2px 8px var(--shadow);
   text-align: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .error-boundary__title {
@@ -57,7 +59,10 @@
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .error-boundary__button {
@@ -78,4 +83,3 @@
 .error-boundary__button:active {
   transform: scale(0.98);
 }
-

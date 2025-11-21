@@ -1,6 +1,10 @@
 import { useIntl } from 'react-intl';
 import { Product } from '../../../../services/models';
-import { calculateShippingPerPerson, hasReachedMinimum, participantsNeeded } from '../../../../utils';
+import {
+  calculateShippingPerPerson,
+  hasReachedMinimum,
+  participantsNeeded,
+} from '../../../../utils';
 import { Button } from '../../../../components/button';
 
 interface ProductCardProps {
@@ -10,7 +14,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInterest }) => {
   const { formatMessage, formatNumber } = useIntl();
-  
+
   const intl = {
     readyToImport: formatMessage({ id: 'productCard.readyToImport' }),
     unitPrice: formatMessage({ id: 'productCard.unitPrice' }),
@@ -19,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
     needed: (count: number) => formatMessage({ id: 'productCard.needed' }, { count }),
     showInterest: formatMessage({ id: 'productCard.showInterest' }),
     importConfirmed: formatMessage({ id: 'productCard.importConfirmed' }),
-    usd: formatMessage({ id: 'common.usd' })
+    usd: formatMessage({ id: 'common.usd' }),
   };
   const shippingPerPerson = calculateShippingPerPerson(
     product.shippingCost,
@@ -29,26 +33,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
   const needed = participantsNeeded(product);
   const progressPercentage = (product.currentParticipants / product.minimumParticipants) * 100;
 
-  const cardClassName = reachedMinimum 
-    ? 'product-card product-card--ready' 
-    : 'product-card';
-  const buttonText = reachedMinimum 
-    ? intl.importConfirmed 
-    : intl.showInterest;
+  const cardClassName = reachedMinimum ? 'product-card product-card--ready' : 'product-card';
+  const buttonText = reachedMinimum ? intl.importConfirmed : intl.showInterest;
 
   return (
     <div className={cardClassName}>
       <div className="product-card__image">
         <img src={product.imageUrl} alt={product.name} />
-        {reachedMinimum && (
-          <span className="product-card__badge">{intl.readyToImport}</span>
-        )}
+        {reachedMinimum && <span className="product-card__badge">{intl.readyToImport}</span>}
       </div>
-      
+
       <div className="product-card__content">
         <h3 className="product-card__title">{product.name}</h3>
         <p className="product-card__description">{product.description}</p>
-        
+
         <div className="product-card__pricing">
           <div className="product-card__price">
             <span className="product-card__price-label">{intl.unitPrice}</span>
@@ -59,7 +57,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
           <div className="product-card__shipping">
             <span className="product-card__shipping-label">{intl.sharedShipping}</span>
             <span className="product-card__shipping-value">
-              ${formatNumber(shippingPerPerson, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {intl.usd}
+              $
+              {formatNumber(shippingPerPerson, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}{' '}
+              {intl.usd}
             </span>
           </div>
         </div>
@@ -67,10 +70,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
         <div className="product-card__participants">
           <div className="product-card__progress">
             <div className="product-card__progress-bar">
-              <div 
+              <div
                 className="product-card__progress-fill"
-                style={{ 
-                  width: `${progressPercentage}%` 
+                style={{
+                  width: `${progressPercentage}%`,
                 }}
               />
             </div>
@@ -78,15 +81,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
               {product.currentParticipants} / {product.minimumParticipants} {intl.participants}
             </div>
           </div>
-          
-          {!reachedMinimum && (
-            <p className="product-card__needed">
-              {intl.needed(needed)}
-            </p>
-          )}
+
+          {!reachedMinimum && <p className="product-card__needed">{intl.needed(needed)}</p>}
         </div>
 
-        <Button 
+        <Button
           className="product-card__button"
           onClick={() => onShowInterest(product.id)}
           disabled={reachedMinimum}
@@ -97,4 +96,3 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
     </div>
   );
 };
-

@@ -43,7 +43,9 @@
   border-radius: 12px;
   box-shadow: 0 2px 4px var(--shadow);
   text-align: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .stat-card__value {
@@ -67,7 +69,9 @@
   border-radius: 12px;
   box-shadow: 0 2px 4px var(--shadow);
   margin-bottom: 24px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .dashboard__section-title {
@@ -99,7 +103,9 @@
   font-weight: 600;
   color: var(--text-primary);
   border-bottom: 2px solid var(--border-color);
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .dashboard__table td {
@@ -107,7 +113,9 @@
   border-bottom: 1px solid var(--border-color);
   font-size: 14px;
   color: var(--text-secondary);
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .table-product {
@@ -197,5 +205,3 @@
   margin: 0;
   transition: color 0.3s ease;
 }
-
-

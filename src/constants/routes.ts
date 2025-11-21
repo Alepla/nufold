@@ -9,5 +9,5 @@ export const ROUTES = {
   FAQ: '/faq',
   PRIVACY: '/privacy',
   TERMS: '/terms',
-  LOGIN: '/login'
+  LOGIN: '/login',
 } as const;

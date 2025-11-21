@@ -16,4 +16,3 @@ export interface AuthStoreActions {
 }
 
 export type AuthStoreState = AuthStoreData & AuthStoreActions;
-

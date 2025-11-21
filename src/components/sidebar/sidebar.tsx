@@ -4,7 +4,16 @@ import { useIntl } from 'react-intl';
 import classNames from 'classnames';
 import { ROUTES } from '../../constants';
 import { IconButton, ICON_BUTTON_TYPE } from '../icon-button';
-import { renderHomeIcon, renderProductsIcon, renderWishlistIcon, renderMyOrdersIcon, renderNotificationsIcon, renderContactIcon, renderMenuIcon, renderCloseIcon } from '../../resources/icons';
+import {
+  renderHomeIcon,
+  renderProductsIcon,
+  renderWishlistIcon,
+  renderMyOrdersIcon,
+  renderNotificationsIcon,
+  renderContactIcon,
+  renderMenuIcon,
+  renderCloseIcon,
+} from '../../resources/icons';
 
 export const Sidebar: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -19,17 +28,18 @@ export const Sidebar: React.FC = () => {
     wishlist: formatMessage({ id: 'header.wishlist' }),
     myOrders: formatMessage({ id: 'header.myOrders' }),
     menu: formatMessage({ id: 'sidebar.menu' }),
-    closeMenu: formatMessage({ id: 'sidebar.closeMenu' })
+    closeMenu: formatMessage({ id: 'sidebar.closeMenu' }),
   };
 
   const isActive = (path: string) => location.pathname === path;
 
-  const getLinkClassName = (path: string) => classNames('sidebar__link', {
-    'sidebar__link--active': isActive(path)
-  });
+  const getLinkClassName = (path: string) =>
+    classNames('sidebar__link', {
+      'sidebar__link--active': isActive(path),
+    });
 
   const sidebarClassName = classNames('sidebar', {
-    'sidebar--open': isOpen
+    'sidebar--open': isOpen,
   });
 
   return (
@@ -42,9 +52,7 @@ export const Sidebar: React.FC = () => {
         title={intl.menu}
       />
 
-      {isOpen && (
-        <div className="sidebar__overlay" onClick={() => setIsOpen(false)} />
-      )}
+      {isOpen && <div className="sidebar__overlay" onClick={() => setIsOpen(false)} />}
 
       <aside className={sidebarClassName}>
         <div className="sidebar__header">
@@ -126,4 +134,3 @@ export const Sidebar: React.FC = () => {
     </>
   );
 };
-

@@ -38,7 +38,7 @@ export const Terms: React.FC = () => {
     applicableLawContent: formatMessage({ id: 'terms.applicableLawContent' }),
     contactTitle: formatMessage({ id: 'terms.contactTitle' }),
     contactContent: formatMessage({ id: 'terms.contactContent' }),
-    backHome: formatMessage({ id: 'notFound.backHome' })
+    backHome: formatMessage({ id: 'notFound.backHome' }),
   };
 
   const sections = [
@@ -51,8 +51,8 @@ export const Terms: React.FC = () => {
         intl.userObligationsItem1,
         intl.userObligationsItem2,
         intl.userObligationsItem3,
-        intl.userObligationsItem4
-      ]
+        intl.userObligationsItem4,
+      ],
     },
     { title: intl.paymentsTitle, content: intl.paymentsContent },
     { title: intl.cancellationsTitle, content: intl.cancellationsContent },
@@ -61,7 +61,7 @@ export const Terms: React.FC = () => {
     { title: intl.modificationsTitle, content: intl.modificationsContent },
     { title: intl.terminationTitle, content: intl.terminationContent },
     { title: intl.applicableLawTitle, content: intl.applicableLawContent },
-    { title: intl.contactTitle, content: intl.contactContent }
+    { title: intl.contactTitle, content: intl.contactContent },
   ];
 
   return (
@@ -69,28 +69,31 @@ export const Terms: React.FC = () => {
       className="legal-page"
       title={intl.title}
       headerExtra={
-        <p className="legal-page__date">{intl.lastUpdated}: {formatLongDate(new Date())}</p>
+        <p className="legal-page__date">
+          {intl.lastUpdated}: {formatLongDate(new Date())}
+        </p>
       }
     >
       <div className="legal-page__content">
-          <section className="legal-page__section">
-            <p className="legal-page__text">{intl.introduction}</p>
-          </section>
+        <section className="legal-page__section">
+          <p className="legal-page__text">{intl.introduction}</p>
+        </section>
 
-          {sections.map((section, index) => (
-            <LegalSection
-              key={index}
-              title={section.title}
-              content={section.content}
-              items={section.items}
-            />
-          ))}
-        </div>
+        {sections.map((section, index) => (
+          <LegalSection
+            key={index}
+            title={section.title}
+            content={section.content}
+            items={section.items}
+          />
+        ))}
+      </div>
 
       <div className="legal-page__footer">
-        <Link to={ROUTES.LANDING} className="legal-page__back-link">{intl.backHome}</Link>
+        <Link to={ROUTES.LANDING} className="legal-page__back-link">
+          {intl.backHome}
+        </Link>
       </div>
     </Layout>
   );
 };
-

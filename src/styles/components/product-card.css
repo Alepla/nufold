@@ -3,7 +3,10 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background-color 0.3s ease;
   display: flex;
   flex-direction: column;
 }
@@ -165,4 +168,3 @@
   background: var(--success-color);
   cursor: not-allowed;
 }
-

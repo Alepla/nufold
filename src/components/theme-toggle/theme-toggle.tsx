@@ -11,7 +11,7 @@ export const ThemeToggle: React.FC = () => {
   const intl = {
     toggleTheme: formatMessage({ id: 'theme.toggleTheme' }),
     lightMode: formatMessage({ id: 'theme.lightMode' }),
-    darkMode: formatMessage({ id: 'theme.darkMode' })
+    darkMode: formatMessage({ id: 'theme.darkMode' }),
   };
 
   const isLightTheme = theme === THEME.LIGHT;
@@ -21,11 +21,7 @@ export const ThemeToggle: React.FC = () => {
 
   return (
     <IconButton
-      icon={
-        <span className="theme-toggle__icon">
-          {currentIcon}
-        </span>
-      }
+      icon={<span className="theme-toggle__icon">{currentIcon}</span>}
       onClick={toggleTheme}
       className="theme-toggle"
       ariaLabel={ariaLabelText}
@@ -33,4 +29,3 @@ export const ThemeToggle: React.FC = () => {
     />
   );
 };
-

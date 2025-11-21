@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { ROUTES } from '../../constants';
 import { IconButton, ICON_BUTTON_TYPE } from '../icon-button';
-import { renderFacebookIcon, renderXIcon, renderInstagramIcon, renderLinkedInIcon, renderEmailIcon } from '../../resources/icons';
+import {
+  renderFacebookIcon,
+  renderXIcon,
+  renderInstagramIcon,
+  renderLinkedInIcon,
+  renderEmailIcon,
+} from '../../resources/icons';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -10,7 +16,7 @@ const SOCIAL_LINKS = {
   FACEBOOK: 'https://facebook.com',
   X: 'https://x.com',
   INSTAGRAM: 'https://instagram.com',
-  LINKEDIN: 'https://linkedin.com'
+  LINKEDIN: 'https://linkedin.com',
 } as const;
 
 export const Footer: React.FC = () => {
@@ -34,7 +40,7 @@ export const Footer: React.FC = () => {
     phone: formatMessage({ id: 'footer.phone' }),
     rights: formatMessage({ id: 'footer.rights' }),
     privacyPolicy: formatMessage({ id: 'footer.privacyPolicy' }),
-    termsOfService: formatMessage({ id: 'footer.termsOfService' })
+    termsOfService: formatMessage({ id: 'footer.termsOfService' }),
   };
 
   return (
@@ -44,21 +50,33 @@ export const Footer: React.FC = () => {
           <div className="footer__section">
             <h3 className="footer__title">{intl.title}</h3>
             <p className="footer__tagline">{intl.tagline}</p>
-            <p className="footer__description">
-              {intl.description}
-            </p>
+            <p className="footer__description">{intl.description}</p>
           </div>
 
           <div className="footer__section">
             <h4 className="footer__section-title">{intl.quickLinks}</h4>
             <nav className="footer__nav">
-              <Link to={ROUTES.LANDING} className="footer__link">{intl.landing}</Link>
-              <Link to={ROUTES.PRODUCTS} className="footer__link">{intl.products}</Link>
-              <Link to={ROUTES.WISHLIST} className="footer__link">{intl.wishlist}</Link>
-              <Link to={ROUTES.MY_ORDERS} className="footer__link">{intl.myOrders}</Link>
-              <Link to={ROUTES.NOTIFICATIONS} className="footer__link">{intl.notifications}</Link>
-              <Link to={ROUTES.CONTACT} className="footer__link">{intl.contact}</Link>
-              <Link to={ROUTES.FAQ} className="footer__link">{intl.faq}</Link>
+              <Link to={ROUTES.LANDING} className="footer__link">
+                {intl.landing}
+              </Link>
+              <Link to={ROUTES.PRODUCTS} className="footer__link">
+                {intl.products}
+              </Link>
+              <Link to={ROUTES.WISHLIST} className="footer__link">
+                {intl.wishlist}
+              </Link>
+              <Link to={ROUTES.MY_ORDERS} className="footer__link">
+                {intl.myOrders}
+              </Link>
+              <Link to={ROUTES.NOTIFICATIONS} className="footer__link">
+                {intl.notifications}
+              </Link>
+              <Link to={ROUTES.CONTACT} className="footer__link">
+                {intl.contact}
+              </Link>
+              <Link to={ROUTES.FAQ} className="footer__link">
+                {intl.faq}
+              </Link>
             </nav>
           </div>
 
@@ -127,9 +145,13 @@ export const Footer: React.FC = () => {
 
         <div className="footer__bottom">
           <div className="footer__legal">
-            <Link to={ROUTES.PRIVACY} className="footer__legal-link">{intl.privacyPolicy}</Link>
+            <Link to={ROUTES.PRIVACY} className="footer__legal-link">
+              {intl.privacyPolicy}
+            </Link>
             <span className="footer__separator">•</span>
-            <Link to={ROUTES.TERMS} className="footer__legal-link">{intl.termsOfService}</Link>
+            <Link to={ROUTES.TERMS} className="footer__legal-link">
+              {intl.termsOfService}
+            </Link>
           </div>
           <p className="footer__copyright">
             © {CURRENT_YEAR} {intl.title}. {intl.rights}
@@ -139,4 +161,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-

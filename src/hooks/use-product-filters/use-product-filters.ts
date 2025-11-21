@@ -9,11 +9,11 @@ export const useProductFilters = (products: Product[]) => {
     sortBy: SORT_OPTIONS.NONE,
     groupBy: GROUP_BY_OPTIONS.NONE,
     categoryFilter: '',
-    statusFilter: ''
+    statusFilter: '',
   });
 
   const categories = useMemo(() => {
-    const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
+    const uniqueCategories = Array.from(new Set(products.map((p) => p.category)));
     return uniqueCategories.sort();
   }, [products]);
 
@@ -22,18 +22,19 @@ export const useProductFilters = (products: Product[]) => {
 
     if (filters.searchQuery) {
       const query = filters.searchQuery.toLowerCase();
-      result = result.filter(product =>
-        product.name.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
+      result = result.filter(
+        (product) =>
+          product.name.toLowerCase().includes(query) ||
+          product.description.toLowerCase().includes(query)
       );
     }
 
     if (filters.categoryFilter) {
-      result = result.filter(product => product.category === filters.categoryFilter);
+      result = result.filter((product) => product.category === filters.categoryFilter);
     }
 
     if (filters.statusFilter) {
-      result = result.filter(product => product.status === filters.statusFilter);
+      result = result.filter((product) => product.status === filters.statusFilter);
     }
 
     if (filters.sortBy !== SORT_OPTIONS.NONE) {
@@ -51,7 +52,7 @@ export const useProductFilters = (products: Product[]) => {
 
     const groups: Record<string, Product[]> = {};
 
-    filteredProducts.forEach(product => {
+    filteredProducts.forEach((product) => {
       let key = '';
       if (filters.groupBy === GROUP_BY_OPTIONS.CATEGORY) {
         key = product.category;
@@ -67,7 +68,7 @@ export const useProductFilters = (products: Product[]) => {
 
     const sortedKeys = Object.keys(groups).sort();
     const sortedGroups: Record<string, Product[]> = {};
-    sortedKeys.forEach(key => {
+    sortedKeys.forEach((key) => {
       sortedGroups[key] = groups[key];
     });
 
@@ -75,23 +76,23 @@ export const useProductFilters = (products: Product[]) => {
   }, [filteredProducts, filters.groupBy]);
 
   const updateSearchQuery = (query: string) => {
-    setFilters(prev => ({ ...prev, searchQuery: query }));
+    setFilters((prev) => ({ ...prev, searchQuery: query }));
   };
 
   const updateSortBy = (sortBy: SortOption) => {
-    setFilters(prev => ({ ...prev, sortBy }));
+    setFilters((prev) => ({ ...prev, sortBy }));
   };
 
   const updateGroupBy = (groupBy: GroupByOption) => {
-    setFilters(prev => ({ ...prev, groupBy }));
+    setFilters((prev) => ({ ...prev, groupBy }));
   };
 
   const updateCategoryFilter = (category: string) => {
-    setFilters(prev => ({ ...prev, categoryFilter: category }));
+    setFilters((prev) => ({ ...prev, categoryFilter: category }));
   };
 
   const updateStatusFilter = (status: string) => {
-    setFilters(prev => ({ ...prev, statusFilter: status }));
+    setFilters((prev) => ({ ...prev, statusFilter: status }));
   };
 
   const resetFilters = () => {
@@ -100,7 +101,7 @@ export const useProductFilters = (products: Product[]) => {
       sortBy: SORT_OPTIONS.NONE,
       groupBy: GROUP_BY_OPTIONS.NONE,
       categoryFilter: '',
-      statusFilter: ''
+      statusFilter: '',
     });
   };
 
@@ -114,7 +115,6 @@ export const useProductFilters = (products: Product[]) => {
     updateGroupBy,
     updateCategoryFilter,
     updateStatusFilter,
-    resetFilters
+    resetFilters,
   };
 };
-

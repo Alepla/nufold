@@ -21,7 +21,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error }) => {
     title: esMessages['errorBoundary.title'],
     message: esMessages['errorBoundary.message'],
     reload: esMessages['errorBoundary.reload'],
-    details: esMessages['errorBoundary.details']
+    details: esMessages['errorBoundary.details'],
   };
 
   return (
@@ -35,10 +35,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({ error }) => {
             <pre className="error-boundary__error">{error.toString()}</pre>
           </details>
         )}
-        <Button
-          className="error-boundary__button"
-          onClick={() => window.location.reload()}
-        >
+        <Button className="error-boundary__button" onClick={() => window.location.reload()}>
           {intl.reload}
         </Button>
       </div>
@@ -51,14 +48,14 @@ class ErrorBoundaryClass extends Component<ErrorBoundaryProps, ErrorBoundaryStat
     super(props);
     this.state = {
       hasError: false,
-      error: null
+      error: null,
     };
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return {
       hasError: true,
-      error
+      error,
     };
   }
 
@@ -80,4 +77,3 @@ class ErrorBoundaryClass extends Component<ErrorBoundaryProps, ErrorBoundaryStat
 }
 
 export const ErrorBoundary = ErrorBoundaryClass;
-

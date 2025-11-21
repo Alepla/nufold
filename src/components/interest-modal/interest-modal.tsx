@@ -12,9 +12,14 @@ interface InterestModalProps {
   onSubmit: (data: { name: string; email: string; quantity: number }) => void;
 }
 
-export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, onClose, onSubmit }) => {
+export const InterestModal: React.FC<InterestModalProps> = ({
+  product,
+  isOpen,
+  onClose,
+  onSubmit,
+}) => {
   const { formatMessage, formatNumber } = useIntl();
-  
+
   const intl = {
     title: (productName: string) => formatMessage({ id: 'interestModal.title' }, { productName }),
     fullName: formatMessage({ id: 'interestModal.fullName' }),
@@ -30,7 +35,7 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
     estimatedTotal: formatMessage({ id: 'interestModal.estimatedTotal' }),
     cancel: formatMessage({ id: 'interestModal.cancel' }),
     confirmInterest: formatMessage({ id: 'interestModal.confirmInterest' }),
-    usd: formatMessage({ id: 'common.usd' })
+    usd: formatMessage({ id: 'common.usd' }),
   };
   const {
     name,
@@ -40,31 +45,31 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
     setEmail,
     handleQuantityChange,
     costSummary,
-    handleSubmit
+    handleSubmit,
   } = useInterestModal(product, onSubmit, onClose);
 
   const costSummaryItems = [
     {
       label: intl.unitPrice,
-      value: `$${formatNumber(product.price)} ${intl.usd}`
+      value: `$${formatNumber(product.price)} ${intl.usd}`,
     },
     {
       label: intl.quantityLabel,
-      value: quantity
+      value: quantity,
     },
     {
       label: intl.productSubtotal,
-      value: `$${formatNumber(costSummary.subtotal, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`
+      value: `$${formatNumber(costSummary.subtotal, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`,
     },
     {
       label: intl.sharedShipping,
-      value: `$${formatNumber(costSummary.shippingPerPerson, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`
+      value: `$${formatNumber(costSummary.shippingPerPerson, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`,
     },
     {
       label: intl.estimatedTotal,
       value: `$${formatNumber(costSummary.totalCost, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`,
-      isTotal: true
-    }
+      isTotal: true,
+    },
   ];
 
   if (!isOpen) {
@@ -74,12 +79,12 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <Button className="modal-close" onClick={onClose}>×</Button>
-        
-        <h2 className="modal-title">
-          {intl.title(product.name)}
-        </h2>
-        
+        <Button className="modal-close" onClick={onClose}>
+          ×
+        </Button>
+
+        <h2 className="modal-title">{intl.title(product.name)}</h2>
+
         <form onSubmit={handleSubmit} className="interest-form">
           <FormField
             id="name"
@@ -111,10 +116,7 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
             required
           />
 
-          <CostSummary
-            title={intl.costSummary}
-            items={costSummaryItems}
-          />
+          <CostSummary title={intl.costSummary} items={costSummaryItems} />
 
           <div className="form-actions">
             <Button type={BUTTON_TYPE.BUTTON} onClick={onClose} className="button-secondary">
@@ -129,4 +131,3 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
     </div>
   );
 };
-

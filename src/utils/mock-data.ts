@@ -15,7 +15,7 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Audio',
     createdAt: '2024-01-15',
-    updatedAt: '2024-01-20'
+    updatedAt: '2024-01-20',
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Wearables',
     createdAt: '2024-01-10',
-    updatedAt: '2024-01-19'
+    updatedAt: '2024-01-19',
   },
   {
     id: '3',
@@ -43,7 +43,7 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Accesorios',
     createdAt: '2024-01-18',
-    updatedAt: '2024-01-21'
+    updatedAt: '2024-01-21',
   },
   {
     id: '4',
@@ -57,7 +57,7 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Electrónica',
     createdAt: '2024-01-12',
-    updatedAt: '2024-01-22'
+    updatedAt: '2024-01-22',
   },
   {
     id: '5',
@@ -71,7 +71,7 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Accesorios',
     createdAt: '2024-01-14',
-    updatedAt: '2024-01-20'
+    updatedAt: '2024-01-20',
   },
   {
     id: '6',
@@ -85,8 +85,8 @@ export const mockProducts: Product[] = [
     status: PRODUCT_STATUS.ACTIVE,
     category: 'Audio',
     createdAt: '2024-01-11',
-    updatedAt: '2024-01-19'
-  }
+    updatedAt: '2024-01-19',
+  },
 ];
 
 export const mockInterests: Interest[] = [
@@ -97,7 +97,7 @@ export const mockInterests: Interest[] = [
     userName: 'Juan Pérez',
     userEmail: 'juan@example.com',
     quantity: 2,
-    createdAt: '2024-01-16'
+    createdAt: '2024-01-16',
   },
   {
     id: '2',
@@ -106,8 +106,8 @@ export const mockInterests: Interest[] = [
     userName: 'María García',
     userEmail: 'maria@example.com',
     quantity: 1,
-    createdAt: '2024-01-17'
-  }
+    createdAt: '2024-01-17',
+  },
 ];
 
 export interface MockNotification {
@@ -120,33 +120,44 @@ export interface MockNotification {
   icon: string;
 }
 
-export const getMockNotifications = (formatMessage: IntlShape['formatMessage']): MockNotification[] => [
+export const getMockNotifications = (
+  formatMessage: IntlShape['formatMessage']
+): MockNotification[] => [
   {
     id: '1',
     type: 'product',
     title: formatMessage({ id: 'notifications.productReady.title' }),
-    message: formatMessage({ id: 'notifications.productReady.message' }, { productName: 'Auriculares Bluetooth Premium' }),
+    message: formatMessage(
+      { id: 'notifications.productReady.message' },
+      { productName: 'Auriculares Bluetooth Premium' }
+    ),
     date: '2024-01-22',
     read: false,
-    icon: ICONS.PACKAGE
+    icon: ICONS.PACKAGE,
   },
   {
     id: '2',
     type: 'update',
     title: formatMessage({ id: 'notifications.productUpdate.title' }),
-    message: formatMessage({ id: 'notifications.productUpdate.message' }, { productName: 'Smartwatch Fitness', participants: 3 }),
+    message: formatMessage(
+      { id: 'notifications.productUpdate.message' },
+      { productName: 'Smartwatch Fitness', participants: 3 }
+    ),
     date: '2024-01-21',
     read: false,
-    icon: ICONS.PEOPLE
+    icon: ICONS.PEOPLE,
   },
   {
     id: '3',
     type: 'reminder',
     title: formatMessage({ id: 'notifications.reminder.title' }),
-    message: formatMessage({ id: 'notifications.reminder.message' }, { productName: 'Tablet Android', needed: 7 }),
+    message: formatMessage(
+      { id: 'notifications.reminder.message' },
+      { productName: 'Tablet Android', needed: 7 }
+    ),
     date: '2024-01-20',
     read: true,
-    icon: ICONS.CLOCK
+    icon: ICONS.CLOCK,
   },
   {
     id: '4',
@@ -155,7 +166,6 @@ export const getMockNotifications = (formatMessage: IntlShape['formatMessage']):
     message: formatMessage({ id: 'notifications.success.message' }),
     date: '2024-01-19',
     read: true,
-    icon: ICONS.CHECK
-  }
+    icon: ICONS.CHECK,
+  },
 ];
-

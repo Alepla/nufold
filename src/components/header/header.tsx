@@ -3,14 +3,19 @@ import { useIntl } from 'react-intl';
 import { useAuthIsAuthenticatedConsumer, useAuthStoreActions } from '../../stores/auth-store';
 import { ROUTES } from '../../constants';
 import { IconButton, ICON_BUTTON_TYPE } from '../icon-button';
-import { renderDashboardIcon, renderLogoutIcon, renderLoginIcon, renderLogoIcon } from '../../resources/icons';
+import {
+  renderDashboardIcon,
+  renderLogoutIcon,
+  renderLoginIcon,
+  renderLogoIcon,
+} from '../../resources/icons';
 
 export const Header: React.FC = () => {
   const { formatMessage } = useIntl();
   const isAuthenticated = useAuthIsAuthenticatedConsumer();
   const { logout } = useAuthStoreActions();
   const navigate = useNavigate();
-  
+
   const intl = {
     title: formatMessage({ id: 'app.title' }),
     tagline: formatMessage({ id: 'app.tagline' }),
@@ -18,7 +23,7 @@ export const Header: React.FC = () => {
     dashboard: formatMessage({ id: 'header.dashboard' }),
     landing: formatMessage({ id: 'header.landing' }),
     login: formatMessage({ id: 'header.login' }),
-    logout: formatMessage({ id: 'header.logout' })
+    logout: formatMessage({ id: 'header.logout' }),
   };
 
   const renderAuthButton = () => {
@@ -50,18 +55,14 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__container">
         <IconButton
-          icon={
-            <div className="header__logo-icon">
-              {renderLogoIcon()}
-            </div>
-          }
+          icon={<div className="header__logo-icon">{renderLogoIcon()}</div>}
           to={ROUTES.LANDING}
           type={ICON_BUTTON_TYPE.LINK}
           className="header__logo"
         >
           <h1>{intl.title}</h1>
         </IconButton>
-        
+
         <nav className="header__nav">
           <IconButton
             icon={renderDashboardIcon()}
@@ -76,4 +77,3 @@ export const Header: React.FC = () => {
     </header>
   );
 };
-

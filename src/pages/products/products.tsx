@@ -7,7 +7,7 @@ import { GROUP_BY_OPTIONS } from '../../hooks';
 
 export const Products: React.FC = () => {
   const { formatMessage } = useIntl();
-  
+
   const intl = {
     title: formatMessage({ id: 'home.title' }),
     subtitle: formatMessage({ id: 'home.subtitle' }),
@@ -18,14 +18,14 @@ export const Products: React.FC = () => {
     statusActive: formatMessage({ id: 'filters.statusActive' }),
     statusPending: formatMessage({ id: 'filters.statusPending' }),
     statusCompleted: formatMessage({ id: 'filters.statusCompleted' }),
-    statusCancelled: formatMessage({ id: 'filters.statusCancelled' })
+    statusCancelled: formatMessage({ id: 'filters.statusCancelled' }),
   };
 
   const statusMap: Record<string, string> = {
     [PRODUCT_STATUS.ACTIVE]: intl.statusActive,
     [PRODUCT_STATUS.PENDING]: intl.statusPending,
     [PRODUCT_STATUS.COMPLETED]: intl.statusCompleted,
-    [PRODUCT_STATUS.CANCELLED]: intl.statusCancelled
+    [PRODUCT_STATUS.CANCELLED]: intl.statusCancelled,
   };
 
   const getGroupTitle = (groupKey: string) => {
@@ -37,7 +37,7 @@ export const Products: React.FC = () => {
     }
     return groupKey;
   };
-  
+
   const {
     loading,
     selectedProduct,
@@ -54,7 +54,7 @@ export const Products: React.FC = () => {
     updateGroupBy,
     updateCategoryFilter,
     updateStatusFilter,
-    resetFilters
+    resetFilters,
   } = useProductsPage();
 
   if (loading) {
@@ -74,12 +74,8 @@ export const Products: React.FC = () => {
 
     return (
       <div className="products-grid">
-        {productsToRender.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onShowInterest={handleShowInterest}
-          />
+        {productsToRender.map((product) => (
+          <ProductCard key={product.id} product={product} onShowInterest={handleShowInterest} />
         ))}
       </div>
     );
@@ -88,51 +84,46 @@ export const Products: React.FC = () => {
   const isGrouped = filters.groupBy !== GROUP_BY_OPTIONS.NONE;
 
   return (
-    <Layout
-      className="products"
-      title={intl.title}
-      subtitle={intl.subtitle}
-    >
+    <Layout className="products" title={intl.title} subtitle={intl.subtitle}>
       <ProductFilters
-          searchQuery={filters.searchQuery}
-          sortBy={filters.sortBy}
-          groupBy={filters.groupBy}
-          categoryFilter={filters.categoryFilter}
-          statusFilter={filters.statusFilter}
-          categories={categories}
-          onSearchChange={updateSearchQuery}
-          onSortChange={updateSortBy}
-          onGroupByChange={updateGroupBy}
-          onCategoryFilterChange={updateCategoryFilter}
-          onStatusFilterChange={updateStatusFilter}
-          onReset={resetFilters}
+        searchQuery={filters.searchQuery}
+        sortBy={filters.sortBy}
+        groupBy={filters.groupBy}
+        categoryFilter={filters.categoryFilter}
+        statusFilter={filters.statusFilter}
+        categories={categories}
+        onSearchChange={updateSearchQuery}
+        onSortChange={updateSortBy}
+        onGroupByChange={updateGroupBy}
+        onCategoryFilterChange={updateCategoryFilter}
+        onStatusFilterChange={updateStatusFilter}
+        onReset={resetFilters}
+      />
+
+      {!isGrouped ? (
+        renderProducts(filteredProducts)
+      ) : (
+        <div className="products-grouped">
+          {Object.entries(groupedProducts).map(([groupKey, products]) => (
+            <div key={groupKey} className="products-group">
+              <h2 className="products-group__title">
+                {getGroupTitle(groupKey)}
+                <span className="products-group__count">({products.length})</span>
+              </h2>
+              {renderProducts(products)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selectedProduct && (
+        <InterestModal
+          product={selectedProduct}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmitInterest}
         />
-
-        {!isGrouped ? (
-          renderProducts(filteredProducts)
-        ) : (
-          <div className="products-grouped">
-            {Object.entries(groupedProducts).map(([groupKey, products]) => (
-              <div key={groupKey} className="products-group">
-                <h2 className="products-group__title">
-                  {getGroupTitle(groupKey)}
-                  <span className="products-group__count">({products.length})</span>
-                </h2>
-                {renderProducts(products)}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {selectedProduct && (
-          <InterestModal
-            product={selectedProduct}
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
-            onSubmit={handleSubmitInterest}
-          />
-        )}
+      )}
     </Layout>
   );
 };
-

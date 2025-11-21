@@ -49,7 +49,7 @@ export const MyOrders: React.FC = () => {
     statusConfirmed: formatMessage({ id: 'myOrders.statusConfirmed' }),
     statusShipping: formatMessage({ id: 'myOrders.statusShipping' }),
     statusDelivered: formatMessage({ id: 'myOrders.statusDelivered' }),
-    statusCancelled: formatMessage({ id: 'myOrders.statusCancelled' })
+    statusCancelled: formatMessage({ id: 'myOrders.statusCancelled' }),
   };
 
   const statusLabels: Record<OrderStatus, string> = {
@@ -57,7 +57,7 @@ export const MyOrders: React.FC = () => {
     [ORDER_STATUS.CONFIRMED]: intl.statusConfirmed,
     [ORDER_STATUS.SHIPPING]: intl.statusShipping,
     [ORDER_STATUS.DELIVERED]: intl.statusDelivered,
-    [ORDER_STATUS.CANCELLED]: intl.statusCancelled
+    [ORDER_STATUS.CANCELLED]: intl.statusCancelled,
   };
 
   const getStatusLabel = (status: Order['status']) => {
@@ -72,13 +72,13 @@ export const MyOrders: React.FC = () => {
     const details = [
       { label: intl.quantity, value: order.quantity },
       { label: intl.unitPrice, value: `€${order.unitPrice.toFixed(2)}` },
-      { label: intl.shippingCost, value: `€${order.shippingCost.toFixed(2)}` }
+      { label: intl.shippingCost, value: `€${order.shippingCost.toFixed(2)}` },
     ];
 
     if (order.estimatedDelivery) {
       details.push({
         label: intl.estimatedDelivery,
-        value: formatShortDate(order.estimatedDelivery)
+        value: formatShortDate(order.estimatedDelivery),
       });
     }
 
@@ -94,17 +94,13 @@ export const MyOrders: React.FC = () => {
   const renderContent = () => {
     if (isEmpty) {
       return (
-        <EmptyPage
-          icon={ICONS.PACKAGE}
-          title={intl.empty}
-          description={intl.emptyDescription}
-        />
+        <EmptyPage icon={ICONS.PACKAGE} title={intl.empty} description={intl.emptyDescription} />
       );
     }
 
     return (
       <div className="my-orders-page__list">
-        {mockOrders.map(order => (
+        {mockOrders.map((order) => (
           <div key={order.id} className="my-orders-page__order">
             <div className="my-orders-page__order-header">
               <div className="my-orders-page__order-info">
@@ -118,9 +114,7 @@ export const MyOrders: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className={getStatusClass(order.status)}>
-                {getStatusLabel(order.status)}
-              </div>
+              <div className={getStatusClass(order.status)}>{getStatusLabel(order.status)}</div>
             </div>
 
             <div className="my-orders-page__order-details">
@@ -148,13 +142,8 @@ export const MyOrders: React.FC = () => {
   };
 
   return (
-    <Layout
-      className="my-orders-page"
-      title={intl.title}
-      subtitle={intl.subtitle}
-    >
+    <Layout className="my-orders-page" title={intl.title} subtitle={intl.subtitle}>
       {renderContent()}
     </Layout>
   );
 };
-

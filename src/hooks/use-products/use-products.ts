@@ -14,8 +14,8 @@ export const useProducts = () => {
   }, []);
 
   const addInterest = (productId: string) => {
-    setProducts(prevProducts =>
-      prevProducts.map(product => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) => {
         if (product.id === productId) {
           return { ...product, currentParticipants: product.currentParticipants + 1 };
         }
@@ -25,8 +25,8 @@ export const useProducts = () => {
   };
 
   const removeInterest = (productId: string) => {
-    setProducts(prevProducts =>
-      prevProducts.map(product => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) => {
         if (product.id === productId && product.currentParticipants > 0) {
           return { ...product, currentParticipants: product.currentParticipants - 1 };
         }
@@ -39,7 +39,6 @@ export const useProducts = () => {
     products,
     loading,
     addInterest,
-    removeInterest
+    removeInterest,
   };
 };
-

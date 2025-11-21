@@ -18,7 +18,6 @@ export const useFAQ = () => {
   return {
     openItems,
     toggleItem,
-    isItemOpen
+    isItemOpen,
   };
 };
-

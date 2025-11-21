@@ -16,12 +16,12 @@ export const EmptyPage: React.FC<EmptyPageProps> = ({
   title,
   description,
   showProductsLink = true,
-  productsLinkText
+  productsLinkText,
 }) => {
   const { formatMessage } = useIntl();
-  
+
   const intl = {
-    defaultProductsLinkText: formatMessage({ id: 'emptyPage.viewProducts' })
+    defaultProductsLinkText: formatMessage({ id: 'emptyPage.viewProducts' }),
   };
 
   return (
@@ -37,4 +37,3 @@ export const EmptyPage: React.FC<EmptyPageProps> = ({
     </div>
   );
 };
-

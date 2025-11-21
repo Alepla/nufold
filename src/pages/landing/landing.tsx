@@ -28,56 +28,51 @@ export const Landing: React.FC = () => {
     benefit3Title: formatMessage({ id: 'landing.benefit3Title' }),
     benefit3Description: formatMessage({ id: 'landing.benefit3Description' }),
     ctaTitle: formatMessage({ id: 'landing.ctaTitle' }),
-    ctaDescription: formatMessage({ id: 'landing.ctaDescription' })
+    ctaDescription: formatMessage({ id: 'landing.ctaDescription' }),
   };
 
   const steps = getSteps(intl);
   const benefits = getBenefits(intl);
 
   return (
-    <Layout
-      className="landing"
-      title={intl.title}
-      subtitle={intl.subtitle}
-    >
+    <Layout className="landing" title={intl.title} subtitle={intl.subtitle}>
       <section className="landing__section">
-          <h2 className="landing__section-title">{intl.whatWeDoTitle}</h2>
-          <p className="landing__section-text">{intl.whatWeDoDescription}</p>
-        </section>
+        <h2 className="landing__section-title">{intl.whatWeDoTitle}</h2>
+        <p className="landing__section-text">{intl.whatWeDoDescription}</p>
+      </section>
 
-        <section className="landing__section">
-          <h2 className="landing__section-title">{intl.howItWorksTitle}</h2>
-          <div className="landing__steps">
-            {steps.map(step => (
-              <Step
-                key={step.number}
-                number={step.number}
-                title={step.title}
-                description={step.description}
-              />
-            ))}
-          </div>
-        </section>
+      <section className="landing__section">
+        <h2 className="landing__section-title">{intl.howItWorksTitle}</h2>
+        <div className="landing__steps">
+          {steps.map((step) => (
+            <Step
+              key={step.number}
+              number={step.number}
+              title={step.title}
+              description={step.description}
+            />
+          ))}
+        </div>
+      </section>
 
-        <section className="landing__section">
-          <h2 className="landing__section-title">{intl.benefitsTitle}</h2>
-          <div className="landing__benefits">
-            {benefits.map((benefit, index) => (
-              <Benefit
-                key={index}
-                icon={benefit.icon}
-                title={benefit.title}
-                description={benefit.description}
-              />
-            ))}
-          </div>
-        </section>
+      <section className="landing__section">
+        <h2 className="landing__section-title">{intl.benefitsTitle}</h2>
+        <div className="landing__benefits">
+          {benefits.map((benefit, index) => (
+            <Benefit
+              key={index}
+              icon={benefit.icon}
+              title={benefit.title}
+              description={benefit.description}
+            />
+          ))}
+        </div>
+      </section>
 
-        <section className="landing__cta">
-          <h2 className="landing__cta-title">{intl.ctaTitle}</h2>
-          <p className="landing__cta-description">{intl.ctaDescription}</p>
-        </section>
+      <section className="landing__cta">
+        <h2 className="landing__cta-title">{intl.ctaTitle}</h2>
+        <p className="landing__cta-description">{intl.ctaDescription}</p>
+      </section>
     </Layout>
   );
 };
-

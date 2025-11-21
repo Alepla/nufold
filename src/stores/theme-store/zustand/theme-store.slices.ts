@@ -2,7 +2,11 @@ import { StateCreator } from 'zustand';
 import { ThemeStoreState, ThemeStoreData, Theme, THEME } from '../theme-store.model';
 
 const getSystemTheme = (): Theme => {
-  if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  ) {
     return THEME.DARK;
   }
   return THEME.LIGHT;
@@ -12,7 +16,7 @@ const getInitialTheme = (): Theme => {
   if (typeof window === 'undefined') {
     return THEME.LIGHT;
   }
-  
+
   try {
     const savedTheme = localStorage.getItem('theme-store');
     if (savedTheme) {
@@ -24,12 +28,12 @@ const getInitialTheme = (): Theme => {
   } catch (_e) {
     // Si hay error al parsear, usar tema del sistema
   }
-  
+
   return getSystemTheme();
 };
 
 const initialState: ThemeStoreData = {
-  theme: getInitialTheme()
+  theme: getInitialTheme(),
 };
 
 export const createThemeStoreSlice: StateCreator<ThemeStoreState> = (set) => ({
@@ -44,6 +48,5 @@ export const createThemeStoreSlice: StateCreator<ThemeStoreState> = (set) => ({
       }
       return { theme: newTheme };
     });
-  }
+  },
 });
-

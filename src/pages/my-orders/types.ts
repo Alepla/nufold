@@ -3,8 +3,7 @@ export const ORDER_STATUS = {
   CONFIRMED: 'confirmed',
   SHIPPING: 'shipping',
   DELIVERED: 'delivered',
-  CANCELLED: 'cancelled'
+  CANCELLED: 'cancelled',
 } as const;
 
-export type OrderStatus = typeof ORDER_STATUS[keyof typeof ORDER_STATUS];
-
+export type OrderStatus = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS];

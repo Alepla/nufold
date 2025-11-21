@@ -1,2 +1,1 @@
 export * from './legal-section';
-

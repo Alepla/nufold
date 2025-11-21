@@ -10,7 +10,7 @@ import { Button } from '../../../../components/button';
 const renderToggleIcon = (isExpanded: boolean) => (
   <svg
     className={classNames('product-filters__toggle-icon', {
-      'product-filters__toggle-icon--expanded': isExpanded
+      'product-filters__toggle-icon--expanded': isExpanded,
     })}
     xmlns="http://www.w3.org/2000/svg"
     width="20"
@@ -53,7 +53,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
   onGroupByChange,
   onCategoryFilterChange,
   onStatusFilterChange,
-  onReset
+  onReset,
 }) => {
   const { formatMessage } = useIntl();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -80,12 +80,17 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
     statusActive: formatMessage({ id: 'filters.statusActive' }),
     statusPending: formatMessage({ id: 'filters.statusPending' }),
     statusCompleted: formatMessage({ id: 'filters.statusCompleted' }),
-    statusCancelled: formatMessage({ id: 'filters.statusCancelled' })
+    statusCancelled: formatMessage({ id: 'filters.statusCancelled' }),
   };
 
-  const hasActiveFilters = searchQuery || sortBy !== SORT_OPTIONS.NONE || groupBy !== GROUP_BY_OPTIONS.NONE || categoryFilter || statusFilter;
+  const hasActiveFilters =
+    searchQuery ||
+    sortBy !== SORT_OPTIONS.NONE ||
+    groupBy !== GROUP_BY_OPTIONS.NONE ||
+    categoryFilter ||
+    statusFilter;
 
-  const toggleButtonLabel = isExpanded 
+  const toggleButtonLabel = isExpanded
     ? formatMessage({ id: 'filters.hideFilters' })
     : formatMessage({ id: 'filters.showFilters' });
 
@@ -96,18 +101,18 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
     { value: SORT_OPTIONS.NAME_ASC, label: intl.sortNameAsc },
     { value: SORT_OPTIONS.NAME_DESC, label: intl.sortNameDesc },
     { value: SORT_OPTIONS.PARTICIPANTS_ASC, label: intl.sortParticipantsAsc },
-    { value: SORT_OPTIONS.PARTICIPANTS_DESC, label: intl.sortParticipantsDesc }
+    { value: SORT_OPTIONS.PARTICIPANTS_DESC, label: intl.sortParticipantsDesc },
   ];
 
   const groupByOptions = [
     { value: GROUP_BY_OPTIONS.NONE, label: intl.groupNone },
     { value: GROUP_BY_OPTIONS.CATEGORY, label: intl.groupCategory },
-    { value: GROUP_BY_OPTIONS.STATUS, label: intl.groupStatus }
+    { value: GROUP_BY_OPTIONS.STATUS, label: intl.groupStatus },
   ];
 
   const categoryOptions = [
     { value: '', label: intl.allCategories },
-    ...categories.map(category => ({ value: category, label: category }))
+    ...categories.map((category) => ({ value: category, label: category })),
   ];
 
   const statusOptions = [
@@ -115,7 +120,7 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
     { value: PRODUCT_STATUS.ACTIVE, label: intl.statusActive },
     { value: PRODUCT_STATUS.PENDING, label: intl.statusPending },
     { value: PRODUCT_STATUS.COMPLETED, label: intl.statusCompleted },
-    { value: PRODUCT_STATUS.CANCELLED, label: intl.statusCancelled }
+    { value: PRODUCT_STATUS.CANCELLED, label: intl.statusCancelled },
   ];
 
   return (
@@ -133,14 +138,11 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
 
         <div className="product-filters__header-actions">
           {hasActiveFilters && (
-            <Button
-              className="product-filters__reset"
-              onClick={onReset}
-            >
+            <Button className="product-filters__reset" onClick={onReset}>
               {intl.resetFilters}
             </Button>
           )}
-          
+
           <IconButton
             icon={renderToggleIcon(isExpanded)}
             onClick={() => setIsExpanded(!isExpanded)}
@@ -192,4 +194,3 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
     </div>
   );
 };
-

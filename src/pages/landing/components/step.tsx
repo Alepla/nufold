@@ -17,4 +17,3 @@ export const Step: React.FC<StepProps> = ({ number, title, description }) => {
     </div>
   );
 };
-

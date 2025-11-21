@@ -6,11 +6,7 @@ interface DetailRowProps {
   classNamePrefix?: string;
 }
 
-export const DetailRow: React.FC<DetailRowProps> = ({
-  label,
-  value,
-  classNamePrefix
-}) => {
+export const DetailRow: React.FC<DetailRowProps> = ({ label, value, classNamePrefix }) => {
   const rowClassName = classNamePrefix ? `${classNamePrefix}__row` : 'detail-row';
   const labelClassName = classNamePrefix ? `${classNamePrefix}__label` : 'detail-row__label';
   const valueClassName = classNamePrefix ? `${classNamePrefix}__value` : 'detail-row__value';
@@ -22,4 +18,3 @@ export const DetailRow: React.FC<DetailRowProps> = ({
     </div>
   );
 };
-

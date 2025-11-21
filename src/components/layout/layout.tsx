@@ -16,7 +16,7 @@ export const Layout: React.FC<LayoutProps> = ({
   subtitle,
   headerActions,
   headerExtra,
-  children
+  children,
 }) => {
   const containerClassName = classNames(className, 'page-gradient');
   const innerContainerClassName = `${className}__container`;
@@ -44,4 +44,3 @@ export const Layout: React.FC<LayoutProps> = ({
     </div>
   );
 };
-

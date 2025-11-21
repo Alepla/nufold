@@ -18,25 +18,25 @@ export const useDashboard = () => {
 
   const readyProducts = useMemo<ProductWithShipping[]>(() => {
     return products
-      .filter(p => hasReachedMinimum(p))
-      .map(product => ({
+      .filter((p) => hasReachedMinimum(p))
+      .map((product) => ({
         ...product,
         shippingPerPerson: calculateShippingPerPerson(
           product.shippingCost,
           product.currentParticipants
-        )
+        ),
       }));
   }, [products]);
 
   const activeProducts = useMemo(() => {
-    return products.filter(p => p.status === PRODUCT_STATUS.ACTIVE && !hasReachedMinimum(p));
+    return products.filter((p) => p.status === PRODUCT_STATUS.ACTIVE && !hasReachedMinimum(p));
   }, [products]);
 
   const stats = useMemo<DashboardStats>(() => {
     return {
       readyCount: readyProducts.length,
       activeCount: activeProducts.length,
-      totalParticipants: products.reduce((sum, p) => sum + p.currentParticipants, 0)
+      totalParticipants: products.reduce((sum, p) => sum + p.currentParticipants, 0),
     };
   }, [readyProducts.length, activeProducts.length, products]);
 
@@ -49,7 +49,6 @@ export const useDashboard = () => {
     readyProducts,
     activeProducts,
     stats,
-    calculateProgress
+    calculateProgress,
   };
 };
-

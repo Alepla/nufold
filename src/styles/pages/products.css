@@ -56,7 +56,6 @@
   transition: color 0.3s ease;
 }
 
-
 .products-grouped {
   display: flex;
   flex-direction: column;
@@ -76,7 +75,9 @@
   margin: 0;
   padding-bottom: 12px;
   border-bottom: 2px solid var(--border-color);
-  transition: color 0.3s ease, border-color 0.3s ease;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .products-group__count {
@@ -86,4 +87,3 @@
   margin-left: 8px;
   transition: color 0.3s ease;
 }
-

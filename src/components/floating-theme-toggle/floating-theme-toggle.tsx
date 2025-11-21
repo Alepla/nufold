@@ -7,4 +7,3 @@ export const FloatingThemeToggle: React.FC = () => {
     </div>
   );
 };
-

@@ -5,10 +5,7 @@ interface StatCardProps {
   label: string;
 }
 
-export const StatCard: React.FC<StatCardProps> = ({
-  value,
-  label
-}) => {
+export const StatCard: React.FC<StatCardProps> = ({ value, label }) => {
   return (
     <div className="stat-card">
       <div className="stat-card__value">{value}</div>
@@ -16,4 +13,3 @@ export const StatCard: React.FC<StatCardProps> = ({
     </div>
   );
 };
-

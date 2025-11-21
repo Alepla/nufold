@@ -30,7 +30,9 @@
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 4px 16px var(--shadow);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .login-page__header {
@@ -80,7 +82,10 @@
   font-size: 16px;
   background: var(--bg-primary);
   color: var(--text-primary);
-  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.2s,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .login-page__input:focus {
@@ -123,7 +128,9 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
   margin-top: 8px;
 }
 
@@ -190,4 +197,3 @@
     font-size: 28px;
   }
 }
-

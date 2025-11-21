@@ -29,13 +29,17 @@ export const FormField: React.FC<FormFieldProps> = ({
   min,
   rows,
   classNamePrefix,
-  showRequiredIndicator = false
+  showRequiredIndicator = false,
 }) => {
   const fieldClassName = classNamePrefix ? `${classNamePrefix}__field` : 'form-field';
   const labelClassName = classNamePrefix ? `${classNamePrefix}__label` : 'form-field__label';
   const inputClassName = classNamePrefix ? `${classNamePrefix}__input` : 'form-field__input';
-  const textareaClassName = classNamePrefix ? `${classNamePrefix}__textarea` : 'form-field__textarea';
-  const requiredClassName = classNamePrefix ? `${classNamePrefix}__required` : 'form-field__required';
+  const textareaClassName = classNamePrefix
+    ? `${classNamePrefix}__textarea`
+    : 'form-field__textarea';
+  const requiredClassName = classNamePrefix
+    ? `${classNamePrefix}__required`
+    : 'form-field__required';
 
   const isTextarea = type === 'textarea' || rows !== undefined;
 
@@ -73,4 +77,3 @@ export const FormField: React.FC<FormFieldProps> = ({
     </div>
   );
 };
-

@@ -14,7 +14,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   target,
   rel,
   ariaExpanded,
-  children
+  children,
 }) => {
   if (type === ICON_BUTTON_TYPE.EXTERNAL && href) {
     return (
@@ -34,13 +34,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
   if (type === ICON_BUTTON_TYPE.LINK && to) {
     return (
-      <Link
-        to={to}
-        className={className}
-        aria-label={ariaLabel}
-        title={title}
-        onClick={onClick}
-      >
+      <Link to={to} className={className} aria-label={ariaLabel} title={title} onClick={onClick}>
         {icon}
         {children}
       </Link>
@@ -61,4 +55,3 @@ export const IconButton: React.FC<IconButtonProps> = ({
     </button>
   );
 };
-

@@ -8,4 +8,3 @@ export const useThemeSync = () => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 };
-

@@ -1,6 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer, Sidebar, ScrollToTop, ScrollToTopButton, FloatingThemeToggle } from '../';
-import { Products, Dashboard, Landing, Privacy, Terms, Login, Contact, Notifications, Wishlist, MyOrders, FAQ, NotFound } from '../../pages';
+import {
+  Products,
+  Dashboard,
+  Landing,
+  Privacy,
+  Terms,
+  Login,
+  Contact,
+  Notifications,
+  Wishlist,
+  MyOrders,
+  FAQ,
+  NotFound,
+} from '../../pages';
 import { ROUTES } from '../../constants';
 
 export const AppRouter: React.FC = () => {
@@ -29,4 +42,3 @@ export const AppRouter: React.FC = () => {
     </Router>
   );
 };
-

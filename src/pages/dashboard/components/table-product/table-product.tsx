@@ -5,10 +5,7 @@ interface TableProductProps {
   name: string;
 }
 
-export const TableProduct: React.FC<TableProductProps> = ({
-  imageUrl,
-  name
-}) => {
+export const TableProduct: React.FC<TableProductProps> = ({ imageUrl, name }) => {
   return (
     <div className="table-product">
       <img src={imageUrl} alt={name} />
@@ -16,4 +13,3 @@ export const TableProduct: React.FC<TableProductProps> = ({
     </div>
   );
 };
-

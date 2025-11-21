@@ -5,17 +5,17 @@ export const SORT_OPTIONS = {
   NAME_DESC: 'name-desc',
   PARTICIPANTS_ASC: 'participants-asc',
   PARTICIPANTS_DESC: 'participants-desc',
-  NONE: 'none'
+  NONE: 'none',
 } as const;
 
 export const GROUP_BY_OPTIONS = {
   CATEGORY: 'category',
   STATUS: 'status',
-  NONE: 'none'
+  NONE: 'none',
 } as const;
 
-export type SortOption = typeof SORT_OPTIONS[keyof typeof SORT_OPTIONS];
-export type GroupByOption = typeof GROUP_BY_OPTIONS[keyof typeof GROUP_BY_OPTIONS];
+export type SortOption = (typeof SORT_OPTIONS)[keyof typeof SORT_OPTIONS];
+export type GroupByOption = (typeof GROUP_BY_OPTIONS)[keyof typeof GROUP_BY_OPTIONS];
 
 export interface FilterState {
   searchQuery: string;
@@ -24,4 +24,3 @@ export interface FilterState {
   categoryFilter: string;
   statusFilter: string;
 }
-
