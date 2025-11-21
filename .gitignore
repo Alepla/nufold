@@ -30,3 +30,14 @@ dist-ssr
 
 # Husky
 .husky/_/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Generated TypeScript declaration files
+*.d.ts
+!src/**/*.d.ts
+
+# Generated config files
+vite.config.js
+vite.config.d.ts
