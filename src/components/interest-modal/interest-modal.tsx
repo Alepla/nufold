@@ -1,6 +1,9 @@
 import { useIntl } from 'react-intl';
 import { Product } from '../../services/models';
+import { FormField } from '../form-field';
+import { CostSummary } from './components';
 import { useInterestModal } from './hooks/use-interest-modal';
+import { Button, BUTTON_TYPE } from '../button';
 
 interface InterestModalProps {
   product: Product;
@@ -40,6 +43,30 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
     handleSubmit
   } = useInterestModal(product, onSubmit, onClose);
 
+  const costSummaryItems = [
+    {
+      label: intl.unitPrice,
+      value: `$${formatNumber(product.price)} ${intl.usd}`
+    },
+    {
+      label: intl.quantityLabel,
+      value: quantity
+    },
+    {
+      label: intl.productSubtotal,
+      value: `$${formatNumber(costSummary.subtotal, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`
+    },
+    {
+      label: intl.sharedShipping,
+      value: `$${formatNumber(costSummary.shippingPerPerson, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`
+    },
+    {
+      label: intl.estimatedTotal,
+      value: `$${formatNumber(costSummary.totalCost, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${intl.usd}`,
+      isTotal: true
+    }
+  ];
+
   if (!isOpen) {
     return null;
   }
@@ -47,80 +74,55 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
+        <Button className="modal-close" onClick={onClose}>×</Button>
         
         <h2 className="modal-title">
           {intl.title(product.name)}
         </h2>
         
         <form onSubmit={handleSubmit} className="interest-form">
-          <div className="form-group">
-            <label htmlFor="name">{intl.fullName}</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              placeholder={intl.fullNamePlaceholder}
-            />
-          </div>
+          <FormField
+            id="name"
+            label={intl.fullName}
+            type="text"
+            value={name}
+            onChange={setName}
+            placeholder={intl.fullNamePlaceholder}
+            required
+          />
 
-          <div className="form-group">
-            <label htmlFor="email">{intl.email}</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder={intl.emailPlaceholder}
-            />
-          </div>
+          <FormField
+            id="email"
+            label={intl.email}
+            type="email"
+            value={email}
+            onChange={setEmail}
+            placeholder={intl.emailPlaceholder}
+            required
+          />
 
-          <div className="form-group">
-            <label htmlFor="quantity">{intl.quantity}</label>
-            <input
-              id="quantity"
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => handleQuantityChange(e.target.value)}
-              required
-            />
-          </div>
+          <FormField
+            id="quantity"
+            label={intl.quantity}
+            type="number"
+            value={quantity}
+            onChange={handleQuantityChange}
+            min="1"
+            required
+          />
 
-          <div className="cost-summary">
-            <h3>{intl.costSummary}</h3>
-            <div className="cost-item">
-              <span>{intl.unitPrice}</span>
-              <span>${formatNumber(product.price)} {intl.usd}</span>
-            </div>
-            <div className="cost-item">
-              <span>{intl.quantityLabel}</span>
-              <span>{quantity}</span>
-            </div>
-            <div className="cost-item">
-              <span>{intl.productSubtotal}</span>
-              <span>${formatNumber(costSummary.subtotal, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {intl.usd}</span>
-            </div>
-            <div className="cost-item">
-              <span>{intl.sharedShipping}</span>
-              <span>${formatNumber(costSummary.shippingPerPerson, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {intl.usd}</span>
-            </div>
-            <div className="cost-item cost-item--total">
-              <span>{intl.estimatedTotal}</span>
-              <span>${formatNumber(costSummary.totalCost, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {intl.usd}</span>
-            </div>
-          </div>
+          <CostSummary
+            title={intl.costSummary}
+            items={costSummaryItems}
+          />
 
           <div className="form-actions">
-            <button type="button" onClick={onClose} className="button-secondary">
+            <Button type={BUTTON_TYPE.BUTTON} onClick={onClose} className="button-secondary">
               {intl.cancel}
-            </button>
-            <button type="submit" className="button-primary">
+            </Button>
+            <Button type={BUTTON_TYPE.SUBMIT} className="button-primary">
               {intl.confirmInterest}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
