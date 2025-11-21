@@ -1,2 +1,0 @@
-export { Terms } from './terms';
-
