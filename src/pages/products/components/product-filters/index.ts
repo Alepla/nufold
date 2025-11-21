@@ -1,2 +1,2 @@
-export { ProductFilters } from './product-filters';
+export * from './product-filters';
 

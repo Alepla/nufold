@@ -1,2 +1,2 @@
-export { FormField } from './form-field';
+export * from './form-field';
 

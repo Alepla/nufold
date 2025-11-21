@@ -1,2 +1,2 @@
-export { ContactInfoItem } from './contact-info-item';
+export * from './contact-info-item';
 

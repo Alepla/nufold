@@ -1,2 +1,2 @@
-export { TableProduct } from './table-product';
+export * from './table-product';
 

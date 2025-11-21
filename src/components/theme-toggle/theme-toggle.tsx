@@ -1,11 +1,12 @@
 import { useIntl } from 'react-intl';
-import { useThemeStore, THEME } from '../../stores/theme-store';
+import { useThemeConsumer, useThemeStoreActions, THEME } from '../../stores/theme-store';
 import { IconButton } from '../icon-button';
 import { renderMoonIcon, renderSunIcon } from '../../resources/icons';
 
 export const ThemeToggle: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { theme, toggleTheme } = useThemeStore();
+  const theme = useThemeConsumer();
+  const { toggleTheme } = useThemeStoreActions();
 
   const intl = {
     toggleTheme: formatMessage({ id: 'theme.toggleTheme' }),

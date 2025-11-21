@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { useAuthStore } from '../../stores/auth-store';
+import { useAuthIsAuthenticatedConsumer, useAuthStoreActions } from '../../stores/auth-store';
 import { ROUTES } from '../../constants';
 import { IconButton, ICON_BUTTON_TYPE } from '../icon-button';
 import { renderDashboardIcon, renderLogoutIcon, renderLoginIcon, renderLogoIcon } from '../../resources/icons';
 
 export const Header: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { isAuthenticated, logout } = useAuthStore();
+  const isAuthenticated = useAuthIsAuthenticatedConsumer();
+  const { logout } = useAuthStoreActions();
   const navigate = useNavigate();
   
   const intl = {

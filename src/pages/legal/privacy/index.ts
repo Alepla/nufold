@@ -1,2 +1,2 @@
-export { Privacy } from './privacy';
+export * from './privacy';
 

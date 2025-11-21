@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useThemeStore } from '../../stores/theme-store';
+import { useThemeConsumer } from '../../stores/theme-store';
 
 export const useThemeSync = () => {
-  const theme = useThemeStore((state) => state.theme);
+  const theme = useThemeConsumer();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

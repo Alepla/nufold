@@ -1,2 +1,2 @@
-export { Terms } from './terms';
+export * from './terms';
 

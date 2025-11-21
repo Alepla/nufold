@@ -1,2 +1,2 @@
-export { DetailRow } from './detail-row';
+export * from './detail-row';
 

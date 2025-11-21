@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { useAuthStore } from '../../../stores/auth-store';
+import { useAuthStoreActions } from '../../../stores/auth-store';
 import { ROUTES } from '../../../constants';
 
 export const useLogin = () => {
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
-  const { login, register } = useAuthStore();
+  const { login, register } = useAuthStoreActions();
   
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');

@@ -1,2 +1,2 @@
-export { FAQ } from './faq';
+export * from './faq';
 

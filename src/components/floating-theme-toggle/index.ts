@@ -1,2 +1,2 @@
-export { FloatingThemeToggle } from './floating-theme-toggle';
+export * from './floating-theme-toggle';
 

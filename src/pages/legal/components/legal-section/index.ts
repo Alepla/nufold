@@ -1,2 +1,2 @@
-export { LegalSection } from './legal-section';
+export * from './legal-section';
 

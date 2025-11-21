@@ -1,3 +1,3 @@
-export { Button } from './button';
-export { BUTTON_TYPE, type ButtonType } from './types';
+export * from './button';
+export * from './types';
 

@@ -1,5 +1,5 @@
-export { StatCard } from './stat-card';
-export { TableProduct } from './table-product';
-export { ProgressBar } from './progress-bar';
-export { StatusBadge, STATUS_BADGE_VARIANT } from './status-badge';
+export * from './stat-card';
+export * from './table-product';
+export * from './progress-bar';
+export * from './status-badge';
 

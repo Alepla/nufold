@@ -1,3 +1,3 @@
-export { Step } from './step';
-export { Benefit } from './benefit';
+export * from './step';
+export * from './benefit';
 

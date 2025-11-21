@@ -1,2 +1,2 @@
-export { SelectField } from './select-field';
+export * from './select-field';
 

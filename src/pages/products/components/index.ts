@@ -1,3 +1,3 @@
-export { ProductFilters } from './product-filters';
-export { ProductCard } from './product-card';
+export * from './product-filters';
+export * from './product-card';
 

@@ -1,2 +1,2 @@
-export { useThemeSync } from './use-theme-sync';
+export * from './use-theme-sync';
 

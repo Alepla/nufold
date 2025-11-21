@@ -1,2 +1,2 @@
-export { Layout } from './layout';
+export * from './layout';
 
