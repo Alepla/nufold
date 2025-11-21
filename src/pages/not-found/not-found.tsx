@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { Layout } from '../../components';
 import { ROUTES } from '../../constants';
 
 export const NotFound: React.FC = () => {
@@ -12,15 +13,15 @@ export const NotFound: React.FC = () => {
   };
 
   return (
-    <div className="not-found">
-      <div className="not-found__container">
-        <h1 className="not-found__title">{intl.title}</h1>
-        <p className="not-found__message">{intl.message}</p>
-        <Link to={ROUTES.LANDING} className="not-found__link">
-          {intl.backHome}
-        </Link>
-      </div>
-    </div>
+    <Layout
+      className="not-found"
+      title={intl.title}
+      subtitle={intl.message}
+    >
+      <Link to={ROUTES.LANDING} className="not-found__link">
+        {intl.backHome}
+      </Link>
+    </Layout>
   );
 };
 

@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
-import { EmptyPage } from '../../components';
-import { ICONS, ORDER_STATUS, OrderStatus } from '../../constants';
+import { EmptyPage, Loader, Layout } from '../../components';
+import { ICONS } from '../../constants';
+import { ORDER_STATUS, OrderStatus } from './types';
 import { formatShortDate } from '../../utils';
+import { DetailRow } from './components';
 
 interface Order {
   id: string;
@@ -17,12 +20,21 @@ interface Order {
 
 export const MyOrders: React.FC = () => {
   const { formatMessage } = useIntl();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const mockOrders: Order[] = [];
 
   const intl = {
     title: formatMessage({ id: 'myOrders.title' }),
     subtitle: formatMessage({ id: 'myOrders.subtitle' }),
+    loading: formatMessage({ id: 'myOrders.loading' }),
     empty: formatMessage({ id: 'myOrders.empty' }),
     emptyDescription: formatMessage({ id: 'myOrders.emptyDescription' }),
     orderNumber: formatMessage({ id: 'myOrders.orderNumber' }),
@@ -56,78 +68,93 @@ export const MyOrders: React.FC = () => {
     return `my-orders__status my-orders__status--${status}`;
   };
 
+  const getOrderDetails = (order: Order) => {
+    const details = [
+      { label: intl.quantity, value: order.quantity },
+      { label: intl.unitPrice, value: `€${order.unitPrice.toFixed(2)}` },
+      { label: intl.shippingCost, value: `€${order.shippingCost.toFixed(2)}` }
+    ];
+
+    if (order.estimatedDelivery) {
+      details.push({
+        label: intl.estimatedDelivery,
+        value: formatShortDate(order.estimatedDelivery)
+      });
+    }
+
+    return details;
+  };
+
   const isEmpty = mockOrders.length === 0;
 
-  return (
-    <div className="my-orders-page page-gradient">
-      <div className="my-orders-page__container">
-        <div className="my-orders-page__header">
-          <h1 className="my-orders-page__title">{intl.title}</h1>
-          <p className="my-orders-page__subtitle">{intl.subtitle}</p>
-        </div>
+  if (loading) {
+    return <Loader message={intl.loading} />;
+  }
 
-        {isEmpty ? (
-          <EmptyPage
-            icon={ICONS.PACKAGE}
-            title={intl.empty}
-            description={intl.emptyDescription}
-          />
-        ) : (
-          <div className="my-orders-page__list">
-            {mockOrders.map(order => (
-              <div key={order.id} className="my-orders-page__order">
-                <div className="my-orders-page__order-header">
-                  <div className="my-orders-page__order-info">
-                    <h3 className="my-orders-page__order-title">{order.productName}</h3>
-                    <div className="my-orders-page__order-meta">
-                      <span className="my-orders-page__order-number">
-                        {intl.orderNumber}: {order.id}
-                      </span>
-                      <span className="my-orders-page__order-date">
-                        {intl.orderDate}: {formatShortDate(order.orderDate)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className={getStatusClass(order.status)}>
-                    {getStatusLabel(order.status)}
-                  </div>
-                </div>
+  const renderContent = () => {
+    if (isEmpty) {
+      return (
+        <EmptyPage
+          icon={ICONS.PACKAGE}
+          title={intl.empty}
+          description={intl.emptyDescription}
+        />
+      );
+    }
 
-                <div className="my-orders-page__order-details">
-                  <div className="my-orders-page__order-row">
-                    <span className="my-orders-page__order-label">{intl.quantity}:</span>
-                    <span className="my-orders-page__order-value">{order.quantity}</span>
-                  </div>
-                  <div className="my-orders-page__order-row">
-                    <span className="my-orders-page__order-label">{intl.unitPrice}:</span>
-                    <span className="my-orders-page__order-value">€{order.unitPrice.toFixed(2)}</span>
-                  </div>
-                  <div className="my-orders-page__order-row">
-                    <span className="my-orders-page__order-label">{intl.shippingCost}:</span>
-                    <span className="my-orders-page__order-value">€{order.shippingCost.toFixed(2)}</span>
-                  </div>
-                  {order.estimatedDelivery && (
-                    <div className="my-orders-page__order-row">
-                      <span className="my-orders-page__order-label">{intl.estimatedDelivery}:</span>
-                      <span className="my-orders-page__order-value">
-                        {formatShortDate(order.estimatedDelivery)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="my-orders-page__order-footer">
-                  <div className="my-orders-page__order-total">
-                    <span className="my-orders-page__order-total-label">{intl.totalPrice}:</span>
-                    <span className="my-orders-page__order-total-value">€{order.totalPrice.toFixed(2)}</span>
-                  </div>
+    return (
+      <div className="my-orders-page__list">
+        {mockOrders.map(order => (
+          <div key={order.id} className="my-orders-page__order">
+            <div className="my-orders-page__order-header">
+              <div className="my-orders-page__order-info">
+                <h3 className="my-orders-page__order-title">{order.productName}</h3>
+                <div className="my-orders-page__order-meta">
+                  <span className="my-orders-page__order-number">
+                    {intl.orderNumber}: {order.id}
+                  </span>
+                  <span className="my-orders-page__order-date">
+                    {intl.orderDate}: {formatShortDate(order.orderDate)}
+                  </span>
                 </div>
               </div>
-            ))}
+              <div className={getStatusClass(order.status)}>
+                {getStatusLabel(order.status)}
+              </div>
+            </div>
+
+            <div className="my-orders-page__order-details">
+              {getOrderDetails(order).map((item, index) => (
+                <DetailRow
+                  key={index}
+                  label={item.label}
+                  value={item.value}
+                  classNamePrefix="my-orders-page__order"
+                />
+              ))}
+            </div>
+
+            <div className="my-orders-page__order-footer">
+              <DetailRow
+                label={intl.totalPrice}
+                value={`€${order.totalPrice.toFixed(2)}`}
+                classNamePrefix="my-orders-page__order-total"
+              />
+            </div>
           </div>
-        )}
+        ))}
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <Layout
+      className="my-orders-page"
+      title={intl.title}
+      subtitle={intl.subtitle}
+    >
+      {renderContent()}
+    </Layout>
   );
 };
 
