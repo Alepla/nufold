@@ -70,7 +70,7 @@ export const useContact = () => {
         subject: '',
         message: ''
       });
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus(FORM_STATUS.ERROR);
     } finally {
       setIsSubmitting(false);

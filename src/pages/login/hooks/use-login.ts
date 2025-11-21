@@ -66,7 +66,7 @@ export const useLogin = () => {
       if (success) {
         navigate(ROUTES.LANDING);
       }
-    } catch (err) {
+    } catch (_err) {
       setError(intl.errorGeneric);
     } finally {
       setLoading(false);

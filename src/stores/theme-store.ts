@@ -30,7 +30,7 @@ const getInitialTheme = (): Theme => {
       if (parsed.state?.theme === THEME.LIGHT || parsed.state?.theme === THEME.DARK) {
         return parsed.state.theme;
       }
-    } catch (e) {
+    } catch (_e) {
       // Si hay error al parsear, usar tema del sistema
     }
   }
