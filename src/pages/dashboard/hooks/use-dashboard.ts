@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Product } from '../../../services/models';
+import { Product, PRODUCT_STATUS } from '../../../services/models';
 import { useProducts } from '../../../hooks';
 import { calculateShippingPerPerson, hasReachedMinimum } from '../../../utils';
 
@@ -29,7 +29,7 @@ export const useDashboard = () => {
   }, [products]);
 
   const activeProducts = useMemo(() => {
-    return products.filter(p => p.status === 'active' && !hasReachedMinimum(p));
+    return products.filter(p => p.status === PRODUCT_STATUS.ACTIVE && !hasReachedMinimum(p));
   }, [products]);
 
   const stats = useMemo<DashboardStats>(() => {
