@@ -41,3 +41,6 @@ dist-ssr
 # Generated config files
 vite.config.js
 vite.config.d.ts
+
+# ESLint cache
+.eslintcache
