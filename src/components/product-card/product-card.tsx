@@ -26,16 +26,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
   );
   const reachedMinimum = hasReachedMinimum(product);
   const needed = participantsNeeded(product);
+  const progressPercentage = (product.currentParticipants / product.minimumParticipants) * 100;
 
-  let cardClassName = 'product-card';
-  if (reachedMinimum) {
-    cardClassName += ' product-card--ready';
-  }
-
-  let buttonText = intl.showInterest;
-  if (reachedMinimum) {
-    buttonText = intl.importConfirmed;
-  }
+  const cardClassName = reachedMinimum 
+    ? 'product-card product-card--ready' 
+    : 'product-card';
+  const buttonText = reachedMinimum 
+    ? intl.importConfirmed 
+    : intl.showInterest;
 
   return (
     <div className={cardClassName}>
@@ -71,7 +69,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onShowInteres
               <div 
                 className="product-card__progress-fill"
                 style={{ 
-                  width: `${(product.currentParticipants / product.minimumParticipants) * 100}%` 
+                  width: `${progressPercentage}%` 
                 }}
               />
             </div>

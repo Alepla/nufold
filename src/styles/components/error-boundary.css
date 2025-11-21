@@ -62,7 +62,7 @@
 
 .error-boundary__button {
   background: var(--accent-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   padding: 0.75rem 2rem;
   font-size: 1rem;

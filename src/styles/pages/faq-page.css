@@ -7,44 +7,6 @@
   overflow: hidden;
 }
 
-.faq-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(8, 47, 73, 1) 0%,
-    rgba(8, 47, 73, 1) 30%,
-    rgba(8, 47, 73, 1) 50%,
-    rgba(8, 47, 73, 1) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-[data-theme='light'] .faq-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(240, 249, 255, 1) 0%,
-    rgba(240, 249, 255, 1) 30%,
-    rgba(240, 249, 255, 1) 50%,
-    rgba(240, 249, 255, 0.8) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
 .faq-page__container {
   max-width: 900px;
   margin: 0 auto;

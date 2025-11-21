@@ -10,44 +10,6 @@
   overflow: hidden;
 }
 
-.login-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(8, 47, 73, 1) 0%,
-    rgba(8, 47, 73, 1) 30%,
-    rgba(8, 47, 73, 1) 50%,
-    rgba(8, 47, 73, 1) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-[data-theme='light'] .login-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(240, 249, 255, 1) 0%,
-    rgba(240, 249, 255, 1) 30%,
-    rgba(240, 249, 255, 1) 50%,
-    rgba(240, 249, 255, 0.8) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
 .login-page__container {
   width: 100%;
   max-width: 450px;
@@ -155,7 +117,7 @@
   width: 100%;
   padding: 14px 24px;
   background: var(--accent-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 8px;
   font-size: 16px;

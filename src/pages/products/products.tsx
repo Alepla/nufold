@@ -1,8 +1,10 @@
 import { useIntl } from 'react-intl';
-import { ProductCard, InterestModal, ProductFilters } from '../../components';
-import { useHome } from './hooks/use-home';
+import { ProductCard, InterestModal, ProductFilters, Loader } from '../../components';
+import { useProductsPage } from './hooks/use-products-page';
+import { PRODUCT_STATUS } from '../../services/models';
+import { GROUP_BY_OPTIONS } from '../../hooks';
 
-export const Home: React.FC = () => {
+export const Products: React.FC = () => {
   const { formatMessage } = useIntl();
   
   const intl = {
@@ -18,17 +20,18 @@ export const Home: React.FC = () => {
     statusCancelled: formatMessage({ id: 'filters.statusCancelled' })
   };
 
+  const statusMap: Record<string, string> = {
+    [PRODUCT_STATUS.ACTIVE]: intl.statusActive,
+    [PRODUCT_STATUS.PENDING]: intl.statusPending,
+    [PRODUCT_STATUS.COMPLETED]: intl.statusCompleted,
+    [PRODUCT_STATUS.CANCELLED]: intl.statusCancelled
+  };
+
   const getGroupTitle = (groupKey: string) => {
-    if (filters.groupBy === 'category') {
+    if (filters.groupBy === GROUP_BY_OPTIONS.CATEGORY) {
       return groupKey;
     }
-    if (filters.groupBy === 'status') {
-      const statusMap: Record<string, string> = {
-        active: intl.statusActive,
-        pending: intl.statusPending,
-        completed: intl.statusCompleted,
-        cancelled: intl.statusCancelled
-      };
+    if (filters.groupBy === GROUP_BY_OPTIONS.STATUS) {
       return `${intl.groupStatus}: ${statusMap[groupKey] || groupKey}`;
     }
     return groupKey;
@@ -50,15 +53,10 @@ export const Home: React.FC = () => {
     updateCategoryFilter,
     updateStatusFilter,
     resetFilters
-  } = useHome();
+  } = useProductsPage();
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>{intl.loading}</p>
-      </div>
-    );
+    return <Loader message={intl.loading} />;
   }
 
   const renderProducts = (productsToRender: typeof filteredProducts) => {
@@ -83,12 +81,14 @@ export const Home: React.FC = () => {
     );
   };
 
+  const isGrouped = filters.groupBy !== GROUP_BY_OPTIONS.NONE;
+
   return (
-    <div className="home">
-      <div className="home__container">
-        <div className="home__header">
-          <h1 className="home__title">{intl.title}</h1>
-          <p className="home__subtitle">
+    <div className="products page-gradient">
+      <div className="products__container">
+        <div className="products__header">
+          <h1 className="products__title">{intl.title}</h1>
+          <p className="products__subtitle">
             {intl.subtitle}
           </p>
         </div>
@@ -108,7 +108,7 @@ export const Home: React.FC = () => {
           onReset={resetFilters}
         />
 
-        {filters.groupBy === 'none' ? (
+        {!isGrouped ? (
           renderProducts(filteredProducts)
         ) : (
           <div className="products-grouped">
@@ -136,3 +136,4 @@ export const Home: React.FC = () => {
     </div>
   );
 };
+

@@ -1,3 +1,4 @@
+import './variables.css';
 import './global.css';
 import './components/header.css';
 import './components/footer.css';
@@ -10,9 +11,11 @@ import './components/interest-modal.css';
 import './components/error-boundary.css';
 import './components/theme-toggle.css';
 import './components/floating-theme-toggle.css';
-import './pages/home.css';
+import './components/empty-page.css';
+import './components/loader.css';
+import './pages/products.css';
 import './pages/dashboard.css';
-import './pages/about.css';
+import './pages/landing.css';
 import './pages/contact-page.css';
 import './pages/notifications-page.css';
 import './pages/wishlist-page.css';

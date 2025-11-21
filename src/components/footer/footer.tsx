@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { ROUTES } from '../../constants';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -9,9 +12,12 @@ export const Footer: React.FC = () => {
     tagline: formatMessage({ id: 'app.tagline' }),
     quickLinks: formatMessage({ id: 'footer.quickLinks' }),
     products: formatMessage({ id: 'header.products' }),
-    about: formatMessage({ id: 'header.about' }),
+    landing: formatMessage({ id: 'header.landing' }),
     contact: formatMessage({ id: 'header.contact' }),
     faq: formatMessage({ id: 'header.faq' }),
+    wishlist: formatMessage({ id: 'header.wishlist' }),
+    myOrders: formatMessage({ id: 'header.myOrders' }),
+    notifications: formatMessage({ id: 'header.notifications' }),
     followUs: formatMessage({ id: 'footer.followUs' }),
     contactSection: formatMessage({ id: 'footer.contact' }),
     email: formatMessage({ id: 'footer.email' }),
@@ -36,10 +42,13 @@ export const Footer: React.FC = () => {
           <div className="footer__section">
             <h4 className="footer__section-title">{intl.quickLinks}</h4>
             <nav className="footer__nav">
-              <Link to="/" className="footer__link">{intl.products}</Link>
-              <Link to="/about" className="footer__link">{intl.about}</Link>
-              <Link to="/contact" className="footer__link">{intl.contact}</Link>
-              <Link to="/faq" className="footer__link">{intl.faq}</Link>
+              <Link to={ROUTES.LANDING} className="footer__link">{intl.landing}</Link>
+              <Link to={ROUTES.PRODUCTS} className="footer__link">{intl.products}</Link>
+              <Link to={ROUTES.WISHLIST} className="footer__link">{intl.wishlist}</Link>
+              <Link to={ROUTES.MY_ORDERS} className="footer__link">{intl.myOrders}</Link>
+              <Link to={ROUTES.NOTIFICATIONS} className="footer__link">{intl.notifications}</Link>
+              <Link to={ROUTES.CONTACT} className="footer__link">{intl.contact}</Link>
+              <Link to={ROUTES.FAQ} className="footer__link">{intl.faq}</Link>
             </nav>
           </div>
 
@@ -113,12 +122,12 @@ export const Footer: React.FC = () => {
 
         <div className="footer__bottom">
           <div className="footer__legal">
-            <Link to="/privacy" className="footer__legal-link">{intl.privacyPolicy}</Link>
+            <Link to={ROUTES.PRIVACY} className="footer__legal-link">{intl.privacyPolicy}</Link>
             <span className="footer__separator">•</span>
-            <Link to="/terms" className="footer__legal-link">{intl.termsOfService}</Link>
+            <Link to={ROUTES.TERMS} className="footer__legal-link">{intl.termsOfService}</Link>
           </div>
           <p className="footer__copyright">
-            © {new Date().getFullYear()} {intl.title}. {intl.rights}
+            © {CURRENT_YEAR} {intl.title}. {intl.rights}
           </p>
         </div>
       </div>

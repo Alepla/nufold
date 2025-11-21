@@ -3,45 +3,8 @@
   background: transparent;
   padding: 40px 0;
   transition: background-color 0.3s ease;
+  position: relative;
   overflow: hidden;
-}
-
-.wishlist-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(8, 47, 73, 1) 0%,
-    rgba(8, 47, 73, 1) 30%,
-    rgba(8, 47, 73, 1) 50%,
-    rgba(8, 47, 73, 1) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-[data-theme='light'] .wishlist-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(240, 249, 255, 1) 0%,
-    rgba(240, 249, 255, 1) 30%,
-    rgba(240, 249, 255, 1) 50%,
-    rgba(240, 249, 255, 0.8) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
 }
 
 .wishlist-page__container {

@@ -1,40 +1,4 @@
-:root {
-  /* Light theme colors - Inspirado en el mar: arena, espuma y aguas turquesas */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f0f9ff; /* Azul cielo muy claro, como el reflejo del mar */
-  --bg-tertiary: #ffffff;
-  --bg-hover: #e0f2fe; /* Azul cielo claro */
-  --text-primary: #0c4a6e; /* Azul océano profundo */
-  --text-secondary: #075985; /* Azul océano medio */
-  --text-tertiary: #0284c7; /* Azul turquesa medio */
-  --border-color: #bae6fd; /* Azul turquesa muy claro */
-  --border-hover: #7dd3fc; /* Azul turquesa claro */
-  --shadow: rgba(6, 78, 110, 0.1); /* Sombra azul océano */
-  --shadow-hover: rgba(6, 78, 110, 0.15);
-  --accent-color: #0ea5e9; /* Azul turquesa vibrante */
-  --accent-hover: #0284c7; /* Azul turquesa más profundo */
-  --error-color: #ef4444; /* Rojo coral */
-  --success-color: #06b6d4; /* Cian turquesa, como aguas cristalinas */
-}
-
-[data-theme='dark'] {
-  /* Dark theme colors - Inspirado en el océano profundo */
-  --bg-primary: #0c4a6e; /* Azul océano profundo */
-  --bg-secondary: #082f49; /* Azul océano muy profundo */
-  --bg-tertiary: #075985; /* Azul océano medio */
-  --bg-hover: #075985; /* Azul océano medio */
-  --text-primary: #f0f9ff; /* Blanco azulado muy claro para máximo contraste */
-  --text-secondary: #dbeafe; /* Azul muy claro para buen contraste */
-  --text-tertiary: #bfdbfe; /* Azul claro para elementos secundarios */
-  --border-color: #075985; /* Azul océano medio */
-  --border-hover: #0284c7; /* Azul turquesa medio */
-  --shadow: rgba(0, 0, 0, 0.4);
-  --shadow-hover: rgba(0, 0, 0, 0.5);
-  --accent-color: #60a5fa; /* Azul turquesa más brillante para mejor visibilidad */
-  --accent-hover: #3b82f6; /* Azul más saturado */
-  --error-color: #f87171; /* Rojo coral claro */
-  --success-color: #34d399; /* Verde turquesa más brillante */
-}
+@import './variables.css';
 
 * {
   margin: 0;
@@ -53,6 +17,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
   min-height: 100vh;
+}
+
+[data-theme='light'] body {
+  background: #e0f2fe;
 }
 
 body::before {
@@ -97,3 +65,21 @@ button {
   font-family: inherit;
 }
 
+.page-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 326px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--page-gradient-start) 0%,
+    var(--page-gradient-start) 30%,
+    var(--page-gradient-mid) 50%,
+    var(--page-gradient-end) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}

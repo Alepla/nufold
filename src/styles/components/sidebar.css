@@ -3,10 +3,10 @@
   top: 23px;
   left: 24px;
   z-index: 101;
-  background: rgba(10, 10, 10, 0.7);
+  background: var(--sidebar-toggle-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--sidebar-toggle-border);
   border-radius: 50%;
   padding: 12px;
   cursor: pointer;
@@ -14,28 +14,18 @@
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--sidebar-toggle-shadow);
   transition: all 0.2s ease;
   width: 48px;
   height: 48px;
   pointer-events: auto;
 }
 
-[data-theme='light'] .sidebar__toggle {
-  background: rgba(250, 250, 250, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 .sidebar__toggle:hover {
   background: var(--bg-hover);
   border-color: var(--accent-color);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme='light'] .sidebar__toggle:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px var(--sidebar-toggle-shadow-hover);
 }
 
 .sidebar__overlay {
@@ -44,7 +34,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-bg);
   z-index: 101;
   animation: fadeIn 0.2s ease;
 }

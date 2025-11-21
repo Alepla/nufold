@@ -1,22 +1,13 @@
 import { useState, useMemo } from 'react';
 import { Product } from '../../services/models';
-
-export type SortOption = 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc' | 'participants-asc' | 'participants-desc' | 'none';
-export type GroupByOption = 'category' | 'status' | 'none';
-
-export interface FilterState {
-  searchQuery: string;
-  sortBy: SortOption;
-  groupBy: GroupByOption;
-  categoryFilter: string;
-  statusFilter: string;
-}
+import { SORT_OPTIONS, GROUP_BY_OPTIONS, SortOption, GroupByOption, FilterState } from './types';
+import { sortComparators } from './utils';
 
 export const useProductFilters = (products: Product[]) => {
   const [filters, setFilters] = useState<FilterState>({
     searchQuery: '',
-    sortBy: 'none',
-    groupBy: 'none',
+    sortBy: SORT_OPTIONS.NONE,
+    groupBy: GROUP_BY_OPTIONS.NONE,
     categoryFilter: '',
     statusFilter: ''
   });
@@ -45,32 +36,16 @@ export const useProductFilters = (products: Product[]) => {
       result = result.filter(product => product.status === filters.statusFilter);
     }
 
-    if (filters.sortBy !== 'none') {
-      result.sort((a, b) => {
-        switch (filters.sortBy) {
-          case 'price-asc':
-            return a.price - b.price;
-          case 'price-desc':
-            return b.price - a.price;
-          case 'name-asc':
-            return a.name.localeCompare(b.name);
-          case 'name-desc':
-            return b.name.localeCompare(a.name);
-          case 'participants-asc':
-            return a.currentParticipants - b.currentParticipants;
-          case 'participants-desc':
-            return b.currentParticipants - a.currentParticipants;
-          default:
-            return 0;
-        }
-      });
+    if (filters.sortBy !== SORT_OPTIONS.NONE) {
+      const comparator = sortComparators[filters.sortBy];
+      result.sort(comparator);
     }
 
     return result;
   }, [products, filters]);
 
   const groupedProducts = useMemo(() => {
-    if (filters.groupBy === 'none') {
+    if (filters.groupBy === GROUP_BY_OPTIONS.NONE) {
       return { '': filteredProducts };
     }
 
@@ -78,9 +53,9 @@ export const useProductFilters = (products: Product[]) => {
 
     filteredProducts.forEach(product => {
       let key = '';
-      if (filters.groupBy === 'category') {
+      if (filters.groupBy === GROUP_BY_OPTIONS.CATEGORY) {
         key = product.category;
-      } else if (filters.groupBy === 'status') {
+      } else if (filters.groupBy === GROUP_BY_OPTIONS.STATUS) {
         key = product.status;
       }
 
@@ -122,8 +97,8 @@ export const useProductFilters = (products: Product[]) => {
   const resetFilters = () => {
     setFilters({
       searchQuery: '',
-      sortBy: 'none',
-      groupBy: 'none',
+      sortBy: SORT_OPTIONS.NONE,
+      groupBy: GROUP_BY_OPTIONS.NONE,
       categoryFilter: '',
       statusFilter: ''
     });

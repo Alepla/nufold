@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { useAuthStore } from '../../stores/auth-store';
+import { ROUTES } from '../../constants';
 
 export const Header: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -12,7 +13,7 @@ export const Header: React.FC = () => {
     tagline: formatMessage({ id: 'app.tagline' }),
     products: formatMessage({ id: 'header.products' }),
     dashboard: formatMessage({ id: 'header.dashboard' }),
-    about: formatMessage({ id: 'header.about' }),
+    landing: formatMessage({ id: 'header.landing' }),
     login: formatMessage({ id: 'header.login' }),
     logout: formatMessage({ id: 'header.logout' })
   };
@@ -20,7 +21,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="/" className="header__logo">
+        <Link to={ROUTES.LANDING} className="header__logo">
           <div className="header__logo-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +59,7 @@ export const Header: React.FC = () => {
         
         <nav className="header__nav">
           <button
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate(ROUTES.DASHBOARD)}
             className="header__icon-button"
             aria-label={intl.dashboard}
             title={intl.dashboard}
@@ -99,7 +100,7 @@ export const Header: React.FC = () => {
               </svg>
             </button>
           ) : (
-            <Link to="/login" className="header__cta-button" aria-label={intl.login} title={intl.login}>
+            <Link to={ROUTES.LOGIN} className="header__cta-button" aria-label={intl.login} title={intl.login}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"

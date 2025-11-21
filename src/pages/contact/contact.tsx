@@ -1,73 +1,19 @@
-import { useState } from 'react';
-import { useIntl } from 'react-intl';
+import { useContact } from './hooks/use-contact';
 
 export const Contact: React.FC = () => {
-  const { formatMessage } = useIntl();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const intl = {
-    title: formatMessage({ id: 'contact.title' }),
-    subtitle: formatMessage({ id: 'contact.subtitle' }),
-    name: formatMessage({ id: 'contact.name' }),
-    namePlaceholder: formatMessage({ id: 'contact.namePlaceholder' }),
-    email: formatMessage({ id: 'contact.email' }),
-    emailPlaceholder: formatMessage({ id: 'contact.emailPlaceholder' }),
-    subject: formatMessage({ id: 'contact.subject' }),
-    subjectPlaceholder: formatMessage({ id: 'contact.subjectPlaceholder' }),
-    message: formatMessage({ id: 'contact.message' }),
-    messagePlaceholder: formatMessage({ id: 'contact.messagePlaceholder' }),
-    sendButton: formatMessage({ id: 'contact.sendButton' }),
-    sending: formatMessage({ id: 'contact.sending' }),
-    successMessage: formatMessage({ id: 'contact.successMessage' }),
-    errorMessage: formatMessage({ id: 'contact.errorMessage' }),
-    required: formatMessage({ id: 'contact.required' }),
-    contactInfo: formatMessage({ id: 'contact.contactInfo' }),
-    emailLabel: formatMessage({ id: 'contact.emailLabel' }),
-    phoneLabel: formatMessage({ id: 'contact.phoneLabel' }),
-    addressLabel: formatMessage({ id: 'contact.addressLabel' })
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log('Formulario enviado:', formData);
-      
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const {
+    formData,
+    isSubmitting,
+    intl,
+    handleChange,
+    handleSubmit,
+    isSuccess,
+    isError,
+    submitButtonText
+  } = useContact();
 
   return (
-    <div className="contact-page">
+    <div className="contact-page page-gradient">
       <div className="contact-page__container">
         <div className="contact-page__header">
           <h1 className="contact-page__title">{intl.title}</h1>
@@ -125,10 +71,10 @@ export const Contact: React.FC = () => {
                   disabled={isSubmitting}
                 >
                   <option value="">{intl.subjectPlaceholder}</option>
-                  <option value="general">{formatMessage({ id: 'contact.subjectGeneral' })}</option>
-                  <option value="product">{formatMessage({ id: 'contact.subjectProduct' })}</option>
-                  <option value="support">{formatMessage({ id: 'contact.subjectSupport' })}</option>
-                  <option value="partnership">{formatMessage({ id: 'contact.subjectPartnership' })}</option>
+                  <option value="general">{intl.subjectGeneral}</option>
+                  <option value="product">{intl.subjectProduct}</option>
+                  <option value="support">{intl.subjectSupport}</option>
+                  <option value="partnership">{intl.subjectPartnership}</option>
                 </select>
               </div>
 
@@ -149,13 +95,13 @@ export const Contact: React.FC = () => {
                 />
               </div>
 
-              {submitStatus === 'success' && (
+              {isSuccess && (
                 <div className="contact-page__success">
                   {intl.successMessage}
                 </div>
               )}
 
-              {submitStatus === 'error' && (
+              {isError && (
                 <div className="contact-page__error">
                   {intl.errorMessage}
                 </div>
@@ -166,7 +112,7 @@ export const Contact: React.FC = () => {
                 className="contact-page__submit"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? intl.sending : intl.sendButton}
+                {submitButtonText}
               </button>
             </form>
           </div>
@@ -213,7 +159,7 @@ export const Contact: React.FC = () => {
               <div className="contact-page__info-content">
                 <h3 className="contact-page__info-label">{intl.addressLabel}</h3>
                 <p className="contact-page__info-text">
-                  {formatMessage({ id: 'contact.address' })}
+                  {intl.address}
                 </p>
               </div>
             </div>

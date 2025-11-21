@@ -36,7 +36,7 @@
   top: 12px;
   right: 12px;
   background: var(--success-color);
-  color: white;
+  color: var(--text-white);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
@@ -147,7 +147,7 @@
   width: 100%;
   padding: 12px 24px;
   background: var(--accent-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 8px;
   font-size: 16px;

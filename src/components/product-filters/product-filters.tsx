@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { SortOption, GroupByOption } from '../../hooks';
+import { SortOption, GroupByOption, SORT_OPTIONS, GROUP_BY_OPTIONS } from '../../hooks';
+import { PRODUCT_STATUS } from '../../services/models';
 
 interface ProductFiltersProps {
   searchQuery: string;
@@ -59,12 +60,11 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
     statusCancelled: formatMessage({ id: 'filters.statusCancelled' })
   };
 
-  const hasActiveFilters = searchQuery || sortBy !== 'none' || groupBy !== 'none' || categoryFilter || statusFilter;
+  const hasActiveFilters = searchQuery || sortBy !== SORT_OPTIONS.NONE || groupBy !== GROUP_BY_OPTIONS.NONE || categoryFilter || statusFilter;
 
-  const intlFilters = {
-    showFilters: formatMessage({ id: 'filters.showFilters' }),
-    hideFilters: formatMessage({ id: 'filters.hideFilters' })
-  };
+  const toggleButtonLabel = isExpanded 
+    ? formatMessage({ id: 'filters.hideFilters' })
+    : formatMessage({ id: 'filters.showFilters' });
 
   return (
     <div className="product-filters">
@@ -95,8 +95,8 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
             onClick={() => setIsExpanded(!isExpanded)}
             type="button"
             aria-expanded={isExpanded}
+            aria-label={toggleButtonLabel}
           >
-            <span>{isExpanded ? intlFilters.hideFilters : intlFilters.showFilters}</span>
             <svg
               className={`product-filters__toggle-icon ${isExpanded ? 'product-filters__toggle-icon--expanded' : ''}`}
               xmlns="http://www.w3.org/2000/svg"
@@ -125,13 +125,13 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 value={sortBy}
                 onChange={(e) => onSortChange(e.target.value as SortOption)}
               >
-                <option value="none">{intl.sortNone}</option>
-                <option value="price-asc">{intl.sortPriceAsc}</option>
-                <option value="price-desc">{intl.sortPriceDesc}</option>
-                <option value="name-asc">{intl.sortNameAsc}</option>
-                <option value="name-desc">{intl.sortNameDesc}</option>
-                <option value="participants-asc">{intl.sortParticipantsAsc}</option>
-                <option value="participants-desc">{intl.sortParticipantsDesc}</option>
+                <option value={SORT_OPTIONS.NONE}>{intl.sortNone}</option>
+                <option value={SORT_OPTIONS.PRICE_ASC}>{intl.sortPriceAsc}</option>
+                <option value={SORT_OPTIONS.PRICE_DESC}>{intl.sortPriceDesc}</option>
+                <option value={SORT_OPTIONS.NAME_ASC}>{intl.sortNameAsc}</option>
+                <option value={SORT_OPTIONS.NAME_DESC}>{intl.sortNameDesc}</option>
+                <option value={SORT_OPTIONS.PARTICIPANTS_ASC}>{intl.sortParticipantsAsc}</option>
+                <option value={SORT_OPTIONS.PARTICIPANTS_DESC}>{intl.sortParticipantsDesc}</option>
               </select>
             </div>
 
@@ -142,9 +142,9 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 value={groupBy}
                 onChange={(e) => onGroupByChange(e.target.value as GroupByOption)}
               >
-                <option value="none">{intl.groupNone}</option>
-                <option value="category">{intl.groupCategory}</option>
-                <option value="status">{intl.groupStatus}</option>
+                <option value={GROUP_BY_OPTIONS.NONE}>{intl.groupNone}</option>
+                <option value={GROUP_BY_OPTIONS.CATEGORY}>{intl.groupCategory}</option>
+                <option value={GROUP_BY_OPTIONS.STATUS}>{intl.groupStatus}</option>
               </select>
             </div>
 
@@ -172,10 +172,10 @@ export const ProductFilters: React.FC<ProductFiltersProps> = ({
                 onChange={(e) => onStatusFilterChange(e.target.value)}
               >
                 <option value="">{intl.allStatuses}</option>
-                <option value="active">{intl.statusActive}</option>
-                <option value="pending">{intl.statusPending}</option>
-                <option value="completed">{intl.statusCompleted}</option>
-                <option value="cancelled">{intl.statusCancelled}</option>
+                <option value={PRODUCT_STATUS.ACTIVE}>{intl.statusActive}</option>
+                <option value={PRODUCT_STATUS.PENDING}>{intl.statusPending}</option>
+                <option value={PRODUCT_STATUS.COMPLETED}>{intl.statusCompleted}</option>
+                <option value={PRODUCT_STATUS.CANCELLED}>{intl.statusCancelled}</option>
               </select>
             </div>
           </div>

@@ -7,44 +7,6 @@
   overflow: hidden;
 }
 
-.my-orders-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(8, 47, 73, 1) 0%,
-    rgba(8, 47, 73, 1) 30%,
-    rgba(8, 47, 73, 1) 50%,
-    rgba(8, 47, 73, 1) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-[data-theme='light'] .my-orders-page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 326px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(240, 249, 255, 1) 0%,
-    rgba(240, 249, 255, 1) 30%,
-    rgba(240, 249, 255, 1) 50%,
-    rgba(240, 249, 255, 0.8) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
 .my-orders-page__container {
   max-width: 1000px;
   margin: 0 auto;
@@ -137,28 +99,28 @@
 }
 
 .my-orders-page__status--pending {
-  background: rgba(251, 191, 36, 0.1);
-  color: #f59e0b;
+  background: var(--status-pending-bg);
+  color: var(--status-pending-color);
 }
 
 .my-orders-page__status--confirmed {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  background: var(--status-confirmed-bg);
+  color: var(--status-confirmed-color);
 }
 
 .my-orders-page__status--shipping {
-  background: rgba(14, 165, 233, 0.1);
-  color: #0ea5e9;
+  background: var(--status-shipping-bg);
+  color: var(--status-shipping-color);
 }
 
 .my-orders-page__status--delivered {
-  background: rgba(6, 182, 212, 0.1);
-  color: #06b6d4;
+  background: var(--status-delivered-bg);
+  color: var(--status-delivered-color);
 }
 
 .my-orders-page__status--cancelled {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  background: var(--status-cancelled-bg);
+  color: var(--status-cancelled-color);
 }
 
 .my-orders-page__order-details {

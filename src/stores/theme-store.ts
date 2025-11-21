@@ -1,7 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type Theme = 'light' | 'dark';
+export const THEME = {
+  LIGHT: 'light',
+  DARK: 'dark'
+} as const;
+
+export type Theme = typeof THEME[keyof typeof THEME];
 
 interface ThemeStore {
   theme: Theme;
@@ -10,19 +15,19 @@ interface ThemeStore {
 
 const getSystemTheme = (): Theme => {
   if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
+    return THEME.DARK;
   }
-  return 'light';
+  return THEME.LIGHT;
 };
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === 'undefined') return 'light';
+  if (typeof window === 'undefined') return THEME.LIGHT;
   
   const savedTheme = localStorage.getItem('theme-store');
   if (savedTheme) {
     try {
       const parsed = JSON.parse(savedTheme);
-      if (parsed.state?.theme === 'light' || parsed.state?.theme === 'dark') {
+      if (parsed.state?.theme === THEME.LIGHT || parsed.state?.theme === THEME.DARK) {
         return parsed.state.theme;
       }
     } catch (e) {
@@ -39,7 +44,7 @@ export const useThemeStore = create<ThemeStore>()(
       
       toggleTheme: () => {
         set((state) => {
-          const newTheme = state.theme === 'light' ? 'dark' : 'light';
+          const newTheme = state.theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
           if (typeof document !== 'undefined') {
             document.documentElement.setAttribute('data-theme', newTheme);
           }

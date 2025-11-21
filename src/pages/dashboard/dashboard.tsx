@@ -1,4 +1,5 @@
 import { useIntl } from 'react-intl';
+import { Loader } from '../../components';
 import { useDashboard } from './hooks/use-dashboard';
 
 export const Dashboard: React.FC = () => {
@@ -32,16 +33,14 @@ export const Dashboard: React.FC = () => {
   } = useDashboard();
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>{intl.loading}</p>
-      </div>
-    );
+    return <Loader message={intl.loading} />;
   }
 
+  const hasReadyProducts = readyProducts.length > 0;
+  const hasActiveProducts = activeProducts.length > 0;
+
   return (
-    <div className="dashboard">
+    <div className="dashboard page-gradient">
       <div className="dashboard__container">
         <h1 className="dashboard__title">{intl.title}</h1>
 
@@ -60,7 +59,7 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {readyProducts.length > 0 && (
+        {hasReadyProducts && (
           <section className="dashboard__section">
             <h2 className="dashboard__section-title">{intl.readyProductsTitle}</h2>
             <div className="dashboard__table-container">
@@ -99,7 +98,7 @@ export const Dashboard: React.FC = () => {
 
         <section className="dashboard__section">
           <h2 className="dashboard__section-title">{intl.inProcessProductsTitle}</h2>
-          {activeProducts.length === 0 ? (
+          {!hasActiveProducts ? (
             <p className="dashboard__empty">{intl.noProductsInProcess}</p>
           ) : (
             <div className="dashboard__table-container">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useIntl } from 'react-intl';
+import { ROUTES } from '../../constants';
 
 export const Sidebar: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -9,7 +10,7 @@ export const Sidebar: React.FC = () => {
 
   const intl = {
     products: formatMessage({ id: 'header.products' }),
-    about: formatMessage({ id: 'header.about' }),
+    landing: formatMessage({ id: 'header.landing' }),
     contact: formatMessage({ id: 'header.contact' }),
     notifications: formatMessage({ id: 'header.notifications' }),
     wishlist: formatMessage({ id: 'header.wishlist' }),
@@ -74,8 +75,8 @@ export const Sidebar: React.FC = () => {
 
         <nav className="sidebar__nav">
           <Link
-            to="/"
-            className={`sidebar__link ${isActive('/') ? 'sidebar__link--active' : ''}`}
+            to={ROUTES.LANDING}
+            className={`sidebar__link ${isActive(ROUTES.LANDING) ? 'sidebar__link--active' : ''}`}
             onClick={() => setIsOpen(false)}
           >
             <svg
@@ -92,12 +93,35 @@ export const Sidebar: React.FC = () => {
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
+            {intl.landing}
+          </Link>
+
+          <Link
+            to={ROUTES.PRODUCTS}
+            className={`sidebar__link ${isActive(ROUTES.PRODUCTS) ? 'sidebar__link--active' : ''}`}
+            onClick={() => setIsOpen(false)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
             {intl.products}
           </Link>
 
           <Link
-            to="/wishlist"
-            className={`sidebar__link ${isActive('/wishlist') ? 'sidebar__link--active' : ''}`}
+            to={ROUTES.WISHLIST}
+            className={`sidebar__link ${isActive(ROUTES.WISHLIST) ? 'sidebar__link--active' : ''}`}
             onClick={() => setIsOpen(false)}
           >
             <svg
@@ -117,8 +141,8 @@ export const Sidebar: React.FC = () => {
           </Link>
 
           <Link
-            to="/my-orders"
-            className={`sidebar__link ${isActive('/my-orders') ? 'sidebar__link--active' : ''}`}
+            to={ROUTES.MY_ORDERS}
+            className={`sidebar__link ${isActive(ROUTES.MY_ORDERS) ? 'sidebar__link--active' : ''}`}
             onClick={() => setIsOpen(false)}
           >
             <svg
@@ -140,8 +164,8 @@ export const Sidebar: React.FC = () => {
           </Link>
 
           <Link
-            to="/notifications"
-            className={`sidebar__link ${isActive('/notifications') ? 'sidebar__link--active' : ''}`}
+            to={ROUTES.NOTIFICATIONS}
+            className={`sidebar__link ${isActive(ROUTES.NOTIFICATIONS) ? 'sidebar__link--active' : ''}`}
             onClick={() => setIsOpen(false)}
           >
             <svg
@@ -165,31 +189,8 @@ export const Sidebar: React.FC = () => {
         <div className="sidebar__footer">
           <div className="sidebar__separator"></div>
           <Link
-            to="/about"
-            className={`sidebar__link ${isActive('/about') ? 'sidebar__link--active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 16v-4"></path>
-              <path d="M12 8h.01"></path>
-            </svg>
-            {intl.about}
-          </Link>
-
-          <Link
-            to="/contact"
-            className={`sidebar__link ${isActive('/contact') ? 'sidebar__link--active' : ''}`}
+            to={ROUTES.CONTACT}
+            className={`sidebar__link ${isActive(ROUTES.CONTACT) ? 'sidebar__link--active' : ''}`}
             onClick={() => setIsOpen(false)}
           >
             <svg

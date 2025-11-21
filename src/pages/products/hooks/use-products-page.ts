@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Product } from '../../../services/models';
 import { useProducts, useProductFilters } from '../../../hooks';
 
-export const useHome = () => {
+export const useProductsPage = () => {
   const { products, loading, addInterest } = useProducts();
   const {
     filters,

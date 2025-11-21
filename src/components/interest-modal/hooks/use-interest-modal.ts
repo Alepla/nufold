@@ -34,6 +34,15 @@ export const useInterestModal = (product: Product, onSubmit: (data: InterestForm
     };
   }, [product, quantity]);
 
+  const handleQuantityChange = (value: string) => {
+    const parsedValue = parseInt(value);
+    if (isNaN(parsedValue) || parsedValue < 1) {
+      setQuantity(1);
+    } else {
+      setQuantity(parsedValue);
+    }
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit({ name, email, quantity });
@@ -54,6 +63,7 @@ export const useInterestModal = (product: Product, onSubmit: (data: InterestForm
     setName,
     setEmail,
     setQuantity,
+    handleQuantityChange,
     costSummary,
     handleSubmit
   };

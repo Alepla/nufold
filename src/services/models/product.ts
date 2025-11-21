@@ -1,3 +1,12 @@
+export const PRODUCT_STATUS = {
+  PENDING: 'pending',
+  ACTIVE: 'active',
+  COMPLETED: 'completed',
+  CANCELLED: 'cancelled'
+} as const;
+
+export type ProductStatus = typeof PRODUCT_STATUS[keyof typeof PRODUCT_STATUS];
+
 export interface Product {
   id: string;
   name: string;
@@ -7,7 +16,7 @@ export interface Product {
   shippingCost: number;
   minimumParticipants: number;
   currentParticipants: number;
-  status: 'pending' | 'active' | 'completed' | 'cancelled';
+  status: ProductStatus;
   category: string;
   createdAt: string;
   updatedAt: string;

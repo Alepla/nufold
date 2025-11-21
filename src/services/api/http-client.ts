@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { LOCAL_STORAGE_KEYS, HTTP_STATUS_CODES, ROUTES } from '../../constants';
 
 interface RequestConfig extends AxiosRequestConfig {
   skipAuth?: boolean;
@@ -43,7 +44,7 @@ class HttpClient {
         return response;
       },
       (error) => {
-        if (error.response?.status === 401) {
+        if (error.response?.status === HTTP_STATUS_CODES.UNAUTHORIZED) {
           this.handleUnauthorized();
         }
         return Promise.reject(error);
@@ -52,12 +53,12 @@ class HttpClient {
   }
 
   private getAuthToken(): string | null {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN);
   }
 
   private handleUnauthorized(): void {
-    localStorage.removeItem('authToken');
-    window.location.href = '/login';
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.AUTH_TOKEN);
+    window.location.href = ROUTES.LOGIN;
   }
 
   async get<T>(url: string, config?: RequestConfig): Promise<T> {

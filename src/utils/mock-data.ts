@@ -1,4 +1,6 @@
-import { Product, Interest } from '../services/models';
+import { Product, Interest, PRODUCT_STATUS } from '../services/models';
+import { ICONS } from '../constants';
+import { IntlShape } from 'react-intl';
 
 export const mockProducts: Product[] = [
   {
@@ -10,7 +12,7 @@ export const mockProducts: Product[] = [
     shippingCost: 150,
     minimumParticipants: 10,
     currentParticipants: 7,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Audio',
     createdAt: '2024-01-15',
     updatedAt: '2024-01-20'
@@ -24,7 +26,7 @@ export const mockProducts: Product[] = [
     shippingCost: 200,
     minimumParticipants: 15,
     currentParticipants: 12,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Wearables',
     createdAt: '2024-01-10',
     updatedAt: '2024-01-19'
@@ -38,7 +40,7 @@ export const mockProducts: Product[] = [
     shippingCost: 100,
     minimumParticipants: 8,
     currentParticipants: 8,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Accesorios',
     createdAt: '2024-01-18',
     updatedAt: '2024-01-21'
@@ -52,7 +54,7 @@ export const mockProducts: Product[] = [
     shippingCost: 250,
     minimumParticipants: 12,
     currentParticipants: 5,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Electrónica',
     createdAt: '2024-01-12',
     updatedAt: '2024-01-22'
@@ -66,7 +68,7 @@ export const mockProducts: Product[] = [
     shippingCost: 180,
     minimumParticipants: 10,
     currentParticipants: 9,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Accesorios',
     createdAt: '2024-01-14',
     updatedAt: '2024-01-20'
@@ -80,7 +82,7 @@ export const mockProducts: Product[] = [
     shippingCost: 120,
     minimumParticipants: 8,
     currentParticipants: 15,
-    status: 'active',
+    status: PRODUCT_STATUS.ACTIVE,
     category: 'Audio',
     createdAt: '2024-01-11',
     updatedAt: '2024-01-19'
@@ -105,6 +107,55 @@ export const mockInterests: Interest[] = [
     userEmail: 'maria@example.com',
     quantity: 1,
     createdAt: '2024-01-17'
+  }
+];
+
+export interface MockNotification {
+  id: string;
+  type: string;
+  title: string;
+  message: string;
+  date: string;
+  read: boolean;
+  icon: string;
+}
+
+export const getMockNotifications = (formatMessage: IntlShape['formatMessage']): MockNotification[] => [
+  {
+    id: '1',
+    type: 'product',
+    title: formatMessage({ id: 'notifications.productReady.title' }),
+    message: formatMessage({ id: 'notifications.productReady.message' }, { productName: 'Auriculares Bluetooth Premium' }),
+    date: '2024-01-22',
+    read: false,
+    icon: ICONS.PACKAGE
+  },
+  {
+    id: '2',
+    type: 'update',
+    title: formatMessage({ id: 'notifications.productUpdate.title' }),
+    message: formatMessage({ id: 'notifications.productUpdate.message' }, { productName: 'Smartwatch Fitness', participants: 3 }),
+    date: '2024-01-21',
+    read: false,
+    icon: ICONS.PEOPLE
+  },
+  {
+    id: '3',
+    type: 'reminder',
+    title: formatMessage({ id: 'notifications.reminder.title' }),
+    message: formatMessage({ id: 'notifications.reminder.message' }, { productName: 'Tablet Android', needed: 7 }),
+    date: '2024-01-20',
+    read: true,
+    icon: ICONS.CLOCK
+  },
+  {
+    id: '4',
+    type: 'success',
+    title: formatMessage({ id: 'notifications.success.title' }),
+    message: formatMessage({ id: 'notifications.success.message' }),
+    date: '2024-01-19',
+    read: true,
+    icon: ICONS.CHECK
   }
 ];
 

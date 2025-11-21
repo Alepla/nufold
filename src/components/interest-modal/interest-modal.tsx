@@ -35,12 +35,14 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
     quantity,
     setName,
     setEmail,
-    setQuantity,
+    handleQuantityChange,
     costSummary,
     handleSubmit
   } = useInterestModal(product, onSubmit, onClose);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -83,14 +85,7 @@ export const InterestModal: React.FC<InterestModalProps> = ({ product, isOpen, o
               type="number"
               min="1"
               value={quantity}
-              onChange={(e) => {
-                const value = parseInt(e.target.value);
-                if (isNaN(value) || value < 1) {
-                  setQuantity(1);
-                } else {
-                  setQuantity(value);
-                }
-              }}
+              onChange={(e) => handleQuantityChange(e.target.value)}
               required
             />
           </div>

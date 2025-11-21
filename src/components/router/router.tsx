@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header, Footer, Sidebar, ScrollToTop, ScrollToTopButton, FloatingThemeToggle } from '../';
-import { Home, Dashboard, About, Privacy, Terms, Login, Contact, Notifications, Wishlist, MyOrders, FAQ, NotFound } from '../../pages';
+import { Products, Dashboard, Landing, Privacy, Terms, Login, Contact, Notifications, Wishlist, MyOrders, FAQ, NotFound } from '../../pages';
+import { ROUTES } from '../../constants';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -9,17 +10,17 @@ export const AppRouter: React.FC = () => {
       <Header />
       <Sidebar />
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/products" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/my-orders" element={<MyOrders />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/login" element={<Login />} />
+        <Route path={ROUTES.LANDING} element={<Landing />} />
+        <Route path={ROUTES.PRODUCTS} element={<Products />} />
+        <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+        <Route path={ROUTES.CONTACT} element={<Contact />} />
+        <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
+        <Route path={ROUTES.WISHLIST} element={<Wishlist />} />
+        <Route path={ROUTES.MY_ORDERS} element={<MyOrders />} />
+        <Route path={ROUTES.FAQ} element={<FAQ />} />
+        <Route path={ROUTES.PRIVACY} element={<Privacy />} />
+        <Route path={ROUTES.TERMS} element={<Terms />} />
+        <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
