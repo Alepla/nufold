@@ -38,6 +38,13 @@
   --page-gradient-start: rgba(224, 242, 254, 1);
   --page-gradient-mid: rgba(224, 242, 254, 1);
   --page-gradient-end: rgba(224, 242, 254, 0.8);
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
 }
 
 [data-theme='dark'] {
